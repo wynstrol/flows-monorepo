@@ -25,7 +25,7 @@ const updateEnvFile = (key, value) => {
 };
 
 const provider = new ethers.providers.JsonRpcProvider(
-  "https://rpc.goerli.mudit.blog/"
+  "https://rpc.goerli.mudit.blog"
   //"${ETH_RPC_ENDPIONT}"
 );
 
