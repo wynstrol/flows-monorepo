@@ -3,9 +3,7 @@
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
-import * as Ethers$FlowsUserApp from "./lib/Ethers/Ethers.bs.js";
 import * as Queries$FlowsUserApp from "./Queries.bs.js";
-import * as RootProvider$FlowsUserApp from "./lib/Old/RootProvider.bs.js";
 
 function paymentStateToStr(prim) {
   return prim;
@@ -137,13 +135,12 @@ var StreamsTable = {
 };
 
 function ViewStreams(Props) {
-  var user = RootProvider$FlowsUserApp.useCurrentUserExn(undefined);
   var match = React.useState(function () {
         return true;
       });
   var setIsOpen = match[1];
   var isOpen = match[0];
-  var viewOpenStreamsQuery = Curry.app(Queries$FlowsUserApp.ViewPaymentsStreamsWithAddress.use, [
+  var viewOpenStreamsQuery = Curry.app(Queries$FlowsUserApp.ViewPaymentsStreams.use, [
         undefined,
         undefined,
         undefined,
@@ -158,11 +155,10 @@ function ViewStreams(Props) {
         undefined,
         undefined,
         {
-          address: Ethers$FlowsUserApp.Utils.ethAdrToStr(user),
           state: "OPEN"
         }
       ]);
-  var viewClosedStreamsQuery = Curry.app(Queries$FlowsUserApp.ViewPaymentsStreamsWithAddress.use, [
+  var viewClosedStreamsQuery = Curry.app(Queries$FlowsUserApp.ViewPaymentsStreams.use, [
         undefined,
         undefined,
         undefined,
@@ -177,7 +173,6 @@ function ViewStreams(Props) {
         undefined,
         undefined,
         {
-          address: Ethers$FlowsUserApp.Utils.ethAdrToStr(user),
           state: "CLOSED"
         }
       ]);

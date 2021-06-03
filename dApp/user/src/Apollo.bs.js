@@ -45,7 +45,7 @@ function terminatingLink(user) {
                 } else {
                   return false;
                 }
-              }), wsLink, makeHttpLink(user));
+              }), wsLink, httpLink);
 }
 
 function makeClient(user) {

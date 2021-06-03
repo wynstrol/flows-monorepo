@@ -30,5 +30,6 @@ let make = () => {
     <div className="grid grid-cols-">
       <Heading> {"Outgoing streams"->React.string} </Heading> <StreamsTable />
     </div>
+    <div> <Heading> {"Test streams"->React.string} </Heading> <ViewStreams /> </div>
   </div>
 }

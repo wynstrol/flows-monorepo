@@ -3,7 +3,7 @@ let paymentStateToStr = Obj.magic
 module StreamsInfo = {
   @react.component
   let make = (
-    ~stream: FlowsUserApp.Queries.ViewPaymentsStreamsWithAddress.ViewPaymentsStreamsWithAddress_inner.t_streams,
+    ~stream: FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.t_streams,
   ) => {
     let {numberOfPayments, numberOfPaymentsMade, amount, id} = stream
 
@@ -57,10 +57,10 @@ module StreamsTable = {
   let make = (
     ~isOpen: bool,
     ~streamsQuery: ApolloClient__React_Hooks_UseQuery.QueryResult.t<
-      FlowsUserApp.Queries.ViewPaymentsStreamsWithAddress.ViewPaymentsStreamsWithAddress_inner.t,
-      FlowsUserApp.Queries.ViewPaymentsStreamsWithAddress.ViewPaymentsStreamsWithAddress_inner.Raw.t,
-      FlowsUserApp.Queries.ViewPaymentsStreamsWithAddress.ViewPaymentsStreamsWithAddress_inner.t_variables,
-      FlowsUserApp.Queries.ViewPaymentsStreamsWithAddress.ViewPaymentsStreamsWithAddress_inner.Raw.t_variables,
+      FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.t,
+      FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.Raw.t,
+      FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.t_variables,
+      FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.Raw.t_variables,
     >,
   ) => {
     let (viewingStream, setViewingStream) = React.useState(_ => false)
@@ -115,16 +115,16 @@ module StreamsTable = {
 
 @react.component
 let make = () => {
-  let user = RootProvider.useCurrentUserExn()
+  //let user = RootProvider.useCurrentUserExn()
 
   let (isOpen, setIsOpen) = React.useState(_ => true)
 
-  let viewOpenStreamsQuery = Queries.ViewPaymentsStreamsWithAddress.use({
-    {address: user->Ethers.Utils.ethAdrToStr, state: "OPEN"}
+  let viewOpenStreamsQuery = Queries.ViewPaymentsStreams.use({
+    {state: "OPEN"}
   })
 
-  let viewClosedStreamsQuery = Queries.ViewPaymentsStreamsWithAddress.use({
-    {address: user->Ethers.Utils.ethAdrToStr, state: "CLOSED"}
+  let viewClosedStreamsQuery = Queries.ViewPaymentsStreams.use({
+    {state: "CLOSED"}
   })
 
   <>
