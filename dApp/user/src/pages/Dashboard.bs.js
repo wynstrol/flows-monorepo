@@ -4,39 +4,38 @@ import * as React from "react";
 import * as Heading$FlowsUserApp from "../components/Heading.bs.js";
 import * as ViewStreams$FlowsUserApp from "../ViewStreams.bs.js";
 import * as StreamsTable$FlowsUserApp from "../components/StreamsTable.bs.js";
+import * as HeadingVarient$FlowsUserApp from "../components/HeadingVarient.bs.js";
 
 function Dashboard(Props) {
   return React.createElement("div", {
               className: "container max-w-3xl mx-auto"
             }, React.createElement("div", {
-                  className: "grid grid-cols-1 gap-4  md:grid-cols-2"
+                  className: "grid grid-cols-1 gap-4  md:grid-cols-1"
                 }, React.createElement("div", {
                       className: ""
-                    }, React.createElement(Heading$FlowsUserApp.make, {
-                          children: "Token Balances"
-                        }), React.createElement("p", undefined, "TTT: 123"), React.createElement("p", undefined, "DAI: 1249"), React.createElement("p", undefined, "RDN: 9311")), React.createElement("div", {
-                      className: ""
-                    }, React.createElement(Heading$FlowsUserApp.make, {
-                          children: "Wallet actions"
-                        }), React.createElement("button", {
-                          className: "mt-3 w-full inline-flex justify-center border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm",
+                    }, React.createElement("button", {
+                          className: "mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-6 py-2 bg-white text-base font-large text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-2xl rounded",
                           onClick: (function (param) {
                               console.log("deposit");
                               
                             })
                         }, "Deposit"), React.createElement("button", {
-                          className: "mt-3 w-full inline-flex justify-center border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm",
+                          className: "mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-4 py-2 bg-white text-base font-large text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-2 sm:w-auto sm:text-2xl rounded",
                           onClick: (function (param) {
                               console.log("Withdraw");
                               
                             })
                         }, "Withdraw"), React.createElement("button", {
-                          className: "mt-3 w-full inline-flex justify-center border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm",
+                          className: "mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-11 py-2 bg-white text-base font-large text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-2 sm:w-auto sm:text-2xl rounded",
                           onClick: (function (param) {
                               console.log("Send");
                               
                             })
                         }, "Send"))), React.createElement("div", {
+                  className: ""
+                }, React.createElement(HeadingVarient$FlowsUserApp.make, {
+                      children: "Token Balances"
+                    }), React.createElement("p", undefined, "TTT: 123 DAI: 1249 RDN: 9311")), React.createElement("div", {
                   className: "grid grid-cols-"
                 }, React.createElement(Heading$FlowsUserApp.make, {
                       children: "Outgoing streams"

@@ -15,7 +15,7 @@ function Nav(Props) {
   return React.createElement("div", {
               className: "container mx-auto py-4"
             }, React.createElement("div", {
-                  className: "flex justify-between items-center"
+                  className: "flex justify-between items-center border-b-2 py-3 border-black"
                 }, React.createElement("a", {
                       className: "flex items-center",
                       href: "https://flows.finance"
@@ -23,7 +23,7 @@ function Nav(Props) {
                           className: "h-10",
                           src: "/img/flows_finance_logo.svg"
                         }), React.createElement("h2", {
-                          className: "pl-4 text-xl"
+                          className: "pl-4 text-3xl"
                         }, "Flows Finance")), user !== undefined ? React.createElement("ul", {
                         className: "flex items-center"
                       }, React.createElement("li", {
@@ -63,7 +63,7 @@ function Nav(Props) {
                               })), React.createElement("li", {
                             className: "pl-4"
                           }, React.createElement("div", {
-                                className: "rounded-md py-1 px-3 bg-indigo-600 bg-opacity-25 uppercase"
+                                className: "rounded-md py-1 px-3 bg-black text-white uppercase"
                               }, network))) : React.createElement("button", {
                         className: "uppercase px-2"
                       }, "connect")));

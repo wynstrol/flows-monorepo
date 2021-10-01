@@ -1,4 +1,4 @@
 @react.component
 let make = (~children) => {
-  <h1 className="text-xl"> {children} </h1>
+  <h1 className="text-2xl"> {children} </h1>
 }

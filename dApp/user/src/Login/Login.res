@@ -59,7 +59,7 @@ let make = (~redirectOnLogin=true) => {
           }}
           className={
             open CssJs
-            style(.[zIndex(1), border(px(1), #solid, rgba(195, 195, 195, #num(0.14)))])
+            style(.[zIndex(1), border(px(1), #solid, rgba(10, 10, 10, #num(1.0)))])
           }>
           <div
             className={

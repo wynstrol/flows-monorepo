@@ -58,9 +58,9 @@ function Login(Props) {
                                     key: String(index),
                                     className: CssJs.style([
                                           CssJs.zIndex(1),
-                                          CssJs.border(CssJs.px(1), "solid", CssJs.rgba(195, 195, 195, {
+                                          CssJs.border(CssJs.px(1), "solid", CssJs.rgba(10, 10, 10, {
                                                     NAME: "num",
-                                                    VAL: 0.14
+                                                    VAL: 1.0
                                                   }))
                                         ]),
                                     onClick: (function (e) {

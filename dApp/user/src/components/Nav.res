@@ -5,10 +5,10 @@ let make = () => {
   let logout = RootProvider.useDeactivateWeb3()
 
   <div className="container mx-auto py-4">
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center border-b-2 py-3 border-black">
       <a href="https://flows.finance" className="flex items-center">
         <img src="/img/flows_finance_logo.svg" className="h-10" />
-        <h2 className="pl-4 text-xl"> {"Flows Finance"->React.string} </h2>
+        <h2 className="pl-4 text-3xl"> {"Flows Finance"->React.string} </h2>
       </a>
       {switch user {
       | Some(userAddress) =>
@@ -37,7 +37,7 @@ let make = () => {
             />
           </li>
           <li className="pl-4">
-            <div className="rounded-md py-1 px-3 bg-indigo-600 bg-opacity-25 uppercase">
+            <div className="rounded-md py-1 px-3 bg-black text-white uppercase">
               {network->React.string}
             </div>
           </li>
@@ -46,4 +46,5 @@ let make = () => {
       }}
     </div>
   </div>
+
 }

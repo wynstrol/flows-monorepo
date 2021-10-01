@@ -3,44 +3,44 @@ let make = () => {
   <div className="flex flex-col">
     <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div className="py-2 align-middle inline-block min-w-full sm:px-2 lg:px-8">
-        <div className="shadow overflow-hidden border-b border-gray-200">
+        <div className="shadow overflow-hidden border border-black rounded">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-black">
               <tr>
                 <th
                   scope="col"
-                  className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  className="px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   {"Receiver"->React.string}
                 </th>
                 <th
                   scope="col"
-                  className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  className="px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   {"Token"->React.string}
                 </th>
                 <th
                   scope="col"
-                  className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  className="px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   {"Amount"->React.string}
                 </th>
                 <th
                   scope="col"
-                  className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  className="px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   {"Progress"->React.string}
                 </th>
                 <th
                   scope="col"
-                  className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  className="px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   {"Auto"->React.string} <br /> {"renew"->React.string}
                 </th>
-                <th scope="col" className="relative px-2 py-3">
+                <th scope="col" className="relative px-5 py-4">
                   <span className="sr-only"> {"Edit"->React.string} </span>
                 </th>
-                <th scope="col" className="relative px-2 py-3">
+                <th scope="col" className="relative px-5 py-4">
                   <span className="sr-only"> {"Delete"->React.string} </span>
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white divide-y divide-black">
               <tr>
                 <td className="px-2 py-4 whitespace-nowrap">
                   <div className="flex items-center">
@@ -59,28 +59,30 @@ let make = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
                   {"DAI"->React.string}
                 </td>
-                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
                   {"950"->React.string}
                 </td>
-                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500 w-full">
+                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800 w-full">
                   <div className="relative pt-1 ">
                     <div
-                      className="flex items-center overflow-hidden h-7 mb-4 text-xs text-white justify-between bg-blue-200">
+                      className="flex items-center overflow-hidden h-7 mb-2 text-xs text-white justify-between bg-gray-500">
                       <div
-                        className="shadow-none w-14 flex-row whitespace-nowrap  bg-blue-400 h-7 items-center">
-                        <p> {"8th Apr 21"->React.string} </p>
+                        className="shadow-none w-14 flex-row whitespace-nowrap  bg-black h-7 items-right px-2 py-1.5">
+                          <p> {"8th Apr 21"->React.string} </p>
                       </div>
-                      <p> {"7th Apr 22"->React.string} </p>
+                      <div className="px-2">
+                        <p> {"7th Apr 22"->React.string} </p>
+                      </div>
                     </div>
                   </div>
                 </td>
-                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-5 py-0 whitespace-nowrap text-sm text-gray-500">
                   <div className="">
                     <input
-                      className="h-6 w-6"
+                      className="h-5 w-5"
                       type_="checkbox"
                       checked={true}
                       onChange={_ => Js.log("Changed")}
@@ -91,17 +93,17 @@ let make = () => {
                   <div className="ml-1">
                     <button
                       onClick={_ => Js.log("edit")}
-                      className="mt-3 justify-center border border-gray-300 shadow-sm py-2 px-3 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-1 sm:w-auto">
-                      <img src="/img/icons/edit.svg" className="h-4 w-4" />
+                      className="block mt-3 justify-center py-0 px-0 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-1">
+                      <img src="/img/icons/edit.svg" className="h-7 w-7" />
                     </button>
                   </div>
                 </td>
                 <td className="py-4">
-                  <div className="mr-1">
+                  <div className="mr-2">
                     <button
                       onClick={_ => Js.log("delete")}
-                      className="mt-3 justify-center border border-gray-300 shadow-sm py-2 px-3 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-1 sm:w-auto">
-                      <img src="/img/icons/delete.svg" className="h-4 w-4" />
+                      className="mt-3 justify-center py-1 px-0 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-1 sm:w-auto">
+                      <img src="/img/icons/delete.svg" className="h-7 w-7" />
                     </button>
                   </div>
                 </td>
@@ -124,28 +126,30 @@ let make = () => {
                     </div>
                   </div>
                 </td>
-                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
                   {"DAI"->React.string}
                 </td>
-                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
                   {"3050"->React.string}
                 </td>
                 <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500 w-full">
                   <div className="relative pt-1 ">
                     <div
-                      className="flex items-center overflow-hidden h-7 mb-4 text-xs text-white justify-between bg-blue-200">
+                      className="flex items-center overflow-hidden h-7 mb-2 text-xs text-white justify-between bg-gray-500">
                       <div
-                        className="shadow-none w-10 flex-row whitespace-nowrap  bg-blue-400 h-7 items-center">
+                        className="shadow-none w-3/12 flex-row whitespace-nowrap  bg-black h-7 items-center px-2 py-1.5">
+                        <p> {"1st Feb 21"->React.string} </p>
+                      </div>
+                      <div className="px-2">
                         <p> {"2nd Feb 21"->React.string} </p>
                       </div>
-                      <p> {"2nd Feb 21"->React.string} </p>
                     </div>
                   </div>
                 </td>
-                <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-5 py-0 whitespace-nowrap text-sm text-gray-500">
                   <div className="">
                     <input
-                      className="h-6 w-6"
+                      className="h-5 w-5"
                       type_="checkbox"
                       checked={true}
                       onChange={_ => Js.log("Changed")}
@@ -156,17 +160,17 @@ let make = () => {
                   <div className="ml-1">
                     <button
                       onClick={_ => Js.log("edit")}
-                      className="block mt-3 justify-center border border-gray-300 shadow-sm py-2 px-3 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-1 sm:w-auto">
-                      <img src="/img/icons/edit.svg" className="h-4 w-4" />
+                      className="block mt-3 justify-center py-0 px-0 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-1 sm:w-auto">
+                      <img src="/img/icons/edit.svg" className="h-7 w-7" />
                     </button>
                   </div>
                 </td>
                 <td className="py-4">
-                  <div className="mr-1">
+                  <div className="mr-2">
                     <button
                       onClick={_ => Js.log("delete")}
-                      className="mt-3 justify-center border border-gray-300 shadow-sm py-2 px-3 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-1 sm:w-auto">
-                      <img src="/img/icons/delete.svg" className="h-4 w-4" />
+                      className="mt-3 justify-center py-1 px-0 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-1 sm:w-auto">
+                      <img src="/img/icons/delete.svg" className="h-7 w-7" />
                     </button>
                   </div>
                 </td>

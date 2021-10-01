@@ -2,14 +2,14 @@
 
 import * as React from "react";
 
-function Heading(Props) {
+function HeadingVarient(Props) {
   var children = Props.children;
   return React.createElement("h1", {
-              className: "text-xl"
+              className: "text-2xl"
             }, children);
 }
 
-var make = Heading;
+var make = HeadingVarient;
 
 export {
   make ,
