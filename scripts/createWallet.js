@@ -44,7 +44,7 @@ const wallets = [
   ethers.Wallet.createRandom().connect(provider),
 ];
 
-const passwordFilename = "../raiden-node/password.txt";
+const passwordFilename = "../dApp/user/backend/raiden-node/password.txt";
 
 fs.readFile(passwordFilename, "utf8", async (err, keystorePasswordRaw) => {
   if (err) throw err;
@@ -67,7 +67,7 @@ fs.readFile(passwordFilename, "utf8", async (err, keystorePasswordRaw) => {
         const ethAddress = ethers.utils.getAddress(walletJson.address);
 
         fs.writeFile(
-          `../raiden-node/keystore/${filename}`,
+          `../dApp/user/backend/raiden-node/keystore/${filename}`,
           walletJsonString,
           "utf8",
           (err) => {

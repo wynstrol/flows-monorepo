@@ -8,7 +8,7 @@ services:
     ports:
       - "5001:5001"
     volumes:
-      - ./raiden-node/:/raiden
+      - ./dApp/user/backend/raiden-node/:/raiden
       - raiden1Data:/root/.raiden
     networks:
       - default
@@ -21,7 +21,7 @@ services:
     ports:
       - "5002:5001"
     volumes:
-      - ./raiden-node/:/raiden
+      - ./dApp/user/backend/raiden-node/:/raiden
       - raiden2Data:/root/.raiden
     networks:
       - default
@@ -34,7 +34,7 @@ services:
     ports:
       - "5003:5001"
     volumes:
-      - ./raiden-node/:/raiden
+      - ./dApp/user/backend/raiden-node/:/raiden
       - raiden3Data:/root/.raiden
     networks:
       - default

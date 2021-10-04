@@ -71,7 +71,7 @@ services:
     ports:
       - "5001:5001"
     volumes:
-      - ../raiden-node/:/raiden
+      - ./raiden-node/:/raiden
       - raiden1Data:/root/.raiden
     networks:
       - default
