@@ -18,7 +18,7 @@ module Input = {
     <div className="flex flex-col w-full">
       <label htmlFor={label}> {title->React.string} </label>
       <input
-        className="border py-2 px-3 text-grey-darkest w-full"
+        className="border py-2 px-3 text-black w-full rounded border-black bg-white hover:bg-black hover:text-white"
         id={label}
         type_="text"
         value={value}

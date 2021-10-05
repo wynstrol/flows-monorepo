@@ -7,7 +7,6 @@ import * as Formality from "re-formality/src/Formality.bs.js";
 import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 import * as Form$FlowsUserApp from "../components/Form.bs.js";
 import * as Ethers$FlowsUserApp from "../lib/Ethers/Ethers.bs.js";
-import * as Heading$FlowsUserApp from "../components/Heading.bs.js";
 import * as Queries$FlowsUserApp from "../Queries.bs.js";
 import * as Formality__ReactUpdate from "re-formality/src/Formality__ReactUpdate.bs.js";
 
@@ -883,18 +882,18 @@ function CreateStream(Props) {
           
         }));
   return React.createElement("div", {
-              className: "border-2 border-grey-600 p-3 container max-w-3xl mx-auto"
+              className: "border-2 border-black p-3 container max-w-3xl mx-auto rounded"
             }, React.createElement(Form$FlowsUserApp.make, {
                   className: "",
                   onSubmit: (function (param) {
                       return Curry._1(form.submit, undefined);
                     }),
                   children: null
-                }, React.createElement(Heading$FlowsUserApp.make, {
-                      children: "Create Stream"
-                    }), React.createElement(Form$FlowsUserApp.Input.make, {
+                }, React.createElement("h1", {
+                      className: "text-2xl pb-2"
+                    }, "Create Stream"), React.createElement(Form$FlowsUserApp.Input.make, {
                       label: "address",
-                      title: "Recipient: ",
+                      title: "Recipient ",
                       value: form.input.userAddress,
                       blur: form.blurUserAddress,
                       updateCurried: Curry._1(form.updateUserAddress, (function (input, value) {
@@ -911,7 +910,7 @@ function CreateStream(Props) {
                       disabled: form.submitting
                     }), React.createElement("br", undefined), React.createElement(Form$FlowsUserApp.Input.make, {
                       label: "amount",
-                      title: "Amount: ",
+                      title: "Amount ",
                       value: form.input.amount,
                       blur: form.blurAmount,
                       updateCurried: Curry._1(form.updateAmount, (function (input, value) {
@@ -928,7 +927,7 @@ function CreateStream(Props) {
                       disabled: form.submitting
                     }), React.createElement("br", undefined), React.createElement(Form$FlowsUserApp.Input.make, {
                       label: "interval",
-                      title: "Interval: ",
+                      title: "Interval ",
                       value: form.input.interval,
                       blur: form.blurInterval,
                       updateCurried: Curry._1(form.updateInterval, (function (input, value) {
@@ -995,7 +994,7 @@ function CreateStream(Props) {
                       result: form.startPaymentResult,
                       disabled: form.submitting
                     }), React.createElement("br", undefined), React.createElement("button", {
-                      className: "mt-3 w-full inline-flex justify-center border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm"
+                      className: "mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded"
                     }, "CREATE STREAM")));
 }
 

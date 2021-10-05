@@ -104,12 +104,12 @@ let make = () => {
       startPayment: startPayment,
     })
   })
-  <div className="border-2 border-grey-600 p-3 container max-w-3xl mx-auto">
+  <div className="border-2 border-black p-3 container max-w-3xl mx-auto rounded">
     <Form className="" onSubmit={() => form.submit()}>
-      <Heading> {"Create Stream"->React.string} </Heading>
+      <h1 className="text-2xl pb-2"> {"Create Stream"->React.string} </h1>
       <Form.Input
         label={"address"}
-        title={"Recipient: "}
+        title={"Recipient "}
         value={form.input.userAddress}
         disabled={form.submitting}
         blur={form.blurUserAddress}
@@ -122,7 +122,7 @@ let make = () => {
       <br />
       <Form.Input
         label={"amount"}
-        title={"Amount: "}
+        title={"Amount "}
         value={form.input.amount}
         disabled={form.submitting}
         blur={form.blurAmount}
@@ -135,7 +135,7 @@ let make = () => {
       <br />
       <Form.Input
         label={"interval"}
-        title={"Interval: "}
+        title={"Interval "}
         value={form.input.interval}
         disabled={form.submitting}
         blur={form.blurInterval}
@@ -186,7 +186,7 @@ let make = () => {
       />
       <br />
       <button
-        className="mt-3 w-full inline-flex justify-center border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
+        className="mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded">
         {"CREATE STREAM"->React.string}
       </button>
     </Form>

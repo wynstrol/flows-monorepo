@@ -36,7 +36,7 @@ function Login(Props) {
                           rel: "noopener noreferrer",
                           target: "_blank"
                         }, React.createElement("span", undefined, "TODO: put a guide in the blog or something that users can read on if they are confused")), ")")), React.createElement("div", {
-                  className: "grid grid-cols-1 gap-2 md:grid-cols-3"
+                  className: "grid grid-cols-1 gap-3 md:grid-cols-3"
                 }, Belt_Array.mapWithIndex(connectors, (function (index, connector) {
                         return React.createElement("div", {
                                     key: String(index),

@@ -33,7 +33,7 @@ function Form$Input(Props) {
             }, React.createElement("label", {
                   htmlFor: label
                 }, title), React.createElement("input", {
-                  className: "border py-2 px-3 text-grey-darkest w-full",
+                  className: "border py-2 px-3 text-black w-full rounded border-black bg-white hover:bg-black hover:text-white",
                   id: label,
                   disabled: disabled,
                   type: "text",
