@@ -40,27 +40,17 @@ let make = (~redirectOnLogin=true) => {
         {")"->React.string}
       </small>
     </p>
-    <div
-      className={
-        open CssJs
-        style(.[
-          display(#grid),
-          gridTemplateColumns([#repeat(#autoFit, #minmax(px(176), fr(0.6)))]),
-          maxWidth(px(800)),
-        ])
-      }>
+    <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
       {connectors
       ->Array.mapWithIndex((index, connector) =>
         <div
+          className="px-2 border-b-4 border-2 border-black bg-white rounded hover:bg-gray-400"
           key={index->string_of_int}
           onClick={e => {
             ReactEvent.Mouse.stopPropagation(e)
             activateConnector(connector.connector)
           }}
-          className={
-            open CssJs
-            style(.[zIndex(1), border(px(1), #solid, rgba(10, 10, 10, #num(1.0)))])
-          }>
+          >
           <div
             className={
               open CssJs
@@ -72,15 +62,13 @@ let make = (~redirectOnLogin=true) => {
                 flexDirection(column),
                 cursor(#pointer),
                 borderRadius(px(12)),
-                backgroundColor(white),
-                hover([backgroundColor(rgb(195, 195, 195))]),
                 transition(~duration=200, ~delay=0, ~timingFunction=easeInOut, "background-color"),
               ])
             }>
             <div
               className={
                 open Css
-                style(list{width(px(45)), height(px(45))})
+                style(list{width(px(70)), height(px(70))})
               }>
               <img
                 src=connector.img
@@ -92,17 +80,11 @@ let make = (~redirectOnLogin=true) => {
               />
             </div>
             <div
-              className={
-                open Css
-                style(list{fontSize(px(24)), fontWeight(#num(700)), marginTop(em(0.5))})
-              }>
+              className="text-2xl text-black font-bold">
               {connector.name->React.string}
             </div>
             <div
-              className={
-                open Css
-                style(list{fontSize(px(15)), marginTop(em(0.35)), color(rgb(169, 169, 188))})
-              }>
+              className="font-large text-black justify-center text-center">
               {connector.connectionPhrase->React.string}
             </div>
           </div>

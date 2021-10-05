@@ -36,33 +36,11 @@ function Login(Props) {
                           rel: "noopener noreferrer",
                           target: "_blank"
                         }, React.createElement("span", undefined, "TODO: put a guide in the blog or something that users can read on if they are confused")), ")")), React.createElement("div", {
-                  className: CssJs.style([
-                        CssJs.display("grid"),
-                        CssJs.gridTemplateColumns([{
-                                NAME: "repeat",
-                                VAL: [
-                                  "autoFit",
-                                  {
-                                    NAME: "minmax",
-                                    VAL: [
-                                      CssJs.px(176),
-                                      CssJs.fr(0.6)
-                                    ]
-                                  }
-                                ]
-                              }]),
-                        CssJs.maxWidth(CssJs.px(800))
-                      ])
+                  className: "grid grid-cols-1 gap-2 md:grid-cols-3"
                 }, Belt_Array.mapWithIndex(connectors, (function (index, connector) {
                         return React.createElement("div", {
                                     key: String(index),
-                                    className: CssJs.style([
-                                          CssJs.zIndex(1),
-                                          CssJs.border(CssJs.px(1), "solid", CssJs.rgba(10, 10, 10, {
-                                                    NAME: "num",
-                                                    VAL: 1.0
-                                                  }))
-                                        ]),
+                                    className: "px-2 border-b-4 border-2 border-black bg-white rounded hover:bg-gray-400",
                                     onClick: (function (e) {
                                         e.stopPropagation();
                                         return Curry._1(activateConnector, connector.connector);
@@ -76,15 +54,13 @@ function Login(Props) {
                                               CssJs.flexDirection(CssJs.column),
                                               CssJs.cursor("pointer"),
                                               CssJs.borderRadius(CssJs.px(12)),
-                                              CssJs.backgroundColor(CssJs.white),
-                                              CssJs.hover([CssJs.backgroundColor(CssJs.rgb(195, 195, 195))]),
                                               CssJs.transition(200, 0, CssJs.easeInOut, "background-color")
                                             ])
                                       }, React.createElement("div", {
                                             className: Curry._1(Css.style, {
-                                                  hd: Css.width(Css.px(45)),
+                                                  hd: Css.width(Css.px(70)),
                                                   tl: {
-                                                    hd: Css.height(Css.px(45)),
+                                                    hd: Css.height(Css.px(70)),
                                                     tl: /* [] */0
                                                   }
                                                 })
@@ -105,30 +81,9 @@ function Login(Props) {
                                                 alt: connector.name,
                                                 src: connector.img
                                               })), React.createElement("div", {
-                                            className: Curry._1(Css.style, {
-                                                  hd: Css.fontSize(Css.px(24)),
-                                                  tl: {
-                                                    hd: Css.fontWeight({
-                                                          NAME: "num",
-                                                          VAL: 700
-                                                        }),
-                                                    tl: {
-                                                      hd: Css.marginTop(Css.em(0.5)),
-                                                      tl: /* [] */0
-                                                    }
-                                                  }
-                                                })
+                                            className: "text-2xl text-black font-bold"
                                           }, connector.name), React.createElement("div", {
-                                            className: Curry._1(Css.style, {
-                                                  hd: Css.fontSize(Css.px(15)),
-                                                  tl: {
-                                                    hd: Css.marginTop(Css.em(0.35)),
-                                                    tl: {
-                                                      hd: Css.color(Css.rgb(169, 169, 188)),
-                                                      tl: /* [] */0
-                                                    }
-                                                  }
-                                                })
+                                            className: "font-large text-black justify-center text-center"
                                           }, connector.connectionPhrase)));
                       }))));
 }

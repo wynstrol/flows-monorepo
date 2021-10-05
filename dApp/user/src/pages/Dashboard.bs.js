@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import * as Heading$FlowsUserApp from "../components/Heading.bs.js";
-import * as ViewStreams$FlowsUserApp from "../ViewStreams.bs.js";
 import * as StreamsTable$FlowsUserApp from "../components/StreamsTable.bs.js";
 import * as HeadingVarient$FlowsUserApp from "../components/HeadingVarient.bs.js";
 
@@ -39,9 +38,7 @@ function Dashboard(Props) {
                   className: "grid grid-cols-"
                 }, React.createElement(Heading$FlowsUserApp.make, {
                       children: "Outgoing streams"
-                    }), React.createElement(StreamsTable$FlowsUserApp.make, {})), React.createElement("div", undefined, React.createElement(Heading$FlowsUserApp.make, {
-                      children: "Test streams"
-                    }), React.createElement(ViewStreams$FlowsUserApp.make, {})));
+                    }), React.createElement(StreamsTable$FlowsUserApp.make, {})));
 }
 
 var make = Dashboard;
