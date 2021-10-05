@@ -40,7 +40,7 @@ function Login(Props) {
                 }, Belt_Array.mapWithIndex(connectors, (function (index, connector) {
                         return React.createElement("div", {
                                     key: String(index),
-                                    className: "px-2 border-b-4 border-2 border-black bg-white rounded hover:bg-gray-400",
+                                    className: "px-2 border-2 border-black bg-white rounded hover:bg-black hover:text-white",
                                     onClick: (function (e) {
                                         e.stopPropagation();
                                         return Curry._1(activateConnector, connector.connector);
@@ -81,9 +81,9 @@ function Login(Props) {
                                                 alt: connector.name,
                                                 src: connector.img
                                               })), React.createElement("div", {
-                                            className: "text-2xl text-black font-bold"
+                                            className: "text-3xl font-bold m-1"
                                           }, connector.name), React.createElement("div", {
-                                            className: "font-large text-black justify-center text-center"
+                                            className: "font-large justify-center text-center m-1"
                                           }, connector.connectionPhrase)));
                       }))));
 }

@@ -44,7 +44,7 @@ let make = (~redirectOnLogin=true) => {
       {connectors
       ->Array.mapWithIndex((index, connector) =>
         <div
-          className="px-2 border-b-4 border-2 border-black bg-white rounded hover:bg-gray-400"
+          className="px-2 border-2 border-black bg-white rounded hover:bg-black hover:text-white"
           key={index->string_of_int}
           onClick={e => {
             ReactEvent.Mouse.stopPropagation(e)
@@ -80,11 +80,11 @@ let make = (~redirectOnLogin=true) => {
               />
             </div>
             <div
-              className="text-2xl text-black font-bold">
+              className="text-3xl font-bold m-1">
               {connector.name->React.string}
             </div>
             <div
-              className="font-large text-black justify-center text-center">
+              className="font-large justify-center text-center m-1">
               {connector.connectionPhrase->React.string}
             </div>
           </div>
