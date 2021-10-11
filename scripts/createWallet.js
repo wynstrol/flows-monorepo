@@ -15,7 +15,7 @@ const updateEnvFile = (key, value) => {
     fs.writeFileSync(
       envfilePath,
       `ETH_RPC_ENDPIONT=""`,
-      `RAIDEN_NODE_VERSION=raidennetwork/raiden:latest`
+      `RAIDEN_NODE_VERSION=docker.io/library/raiden`
     );
   }
 
@@ -26,7 +26,7 @@ const updateEnvFile = (key, value) => {
 };
 
 const provider = new ethers.providers.JsonRpcProvider(
-  "https://rpc.goerli.mudit.blog"
+  "https://goerli.infura.io/v3/960f7319ef294e5b8b151aacdc3b390c"
   //"${ETH_RPC_ENDPIONT}"
 );
 
