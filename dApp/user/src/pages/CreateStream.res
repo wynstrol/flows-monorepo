@@ -186,6 +186,7 @@ let make = () => {
       />
       <br />
       <button
+        onClick={_ => Js.log("clicked")}
         className="mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded">
         {"CREATE STREAM"->React.string}
       </button>
