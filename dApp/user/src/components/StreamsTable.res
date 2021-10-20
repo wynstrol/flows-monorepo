@@ -71,11 +71,9 @@ let make = () => {
                       className="flex items-center overflow-hidden h-7 mb-2 text-xs text-white justify-between bg-gray-500">
                       <div
                         className="shadow-none w-14 flex-row whitespace-nowrap  bg-black h-7 items-right px-2 py-1.5">
-                          <p> {"8th Apr 21"->React.string} </p>
+                        <p> {"8th Apr 21"->React.string} </p>
                       </div>
-                      <div className="px-2">
-                        <p> {"7th Apr 22"->React.string} </p>
-                      </div>
+                      <div className="px-2"> <p> {"7th Apr 22"->React.string} </p> </div>
                     </div>
                   </div>
                 </td>
@@ -140,9 +138,7 @@ let make = () => {
                         className="shadow-none w-3/12 flex-row whitespace-nowrap  bg-black h-7 items-center px-2 py-1.5">
                         <p> {"1st Feb 21"->React.string} </p>
                       </div>
-                      <div className="px-2">
-                        <p> {"2nd Feb 21"->React.string} </p>
-                      </div>
+                      <div className="px-2"> <p> {"2nd Feb 21"->React.string} </p> </div>
                     </div>
                   </div>
                 </td>

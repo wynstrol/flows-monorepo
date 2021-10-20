@@ -67,7 +67,7 @@ services:
     image: ${RAIDEN_NODE_VERSION:-raidennetwork/raiden:latest}
     container_name: raiden1
     restart: unless-stopped
-    command: --address "${NODE1_ETH_ADDRESS}" --keystore-path /raiden/keystore --password-file /raiden/password.txt --eth-rpc-endpoint "${ETH_RPC_ENDPIONT}" --network-id goerli --environment-type development --api-address "0.0.0.0:5001" --matrix-server "https://transport.transport01.raiden.network" --accept-disclaimer
+    command: --address "${NODE1_ETH_ADDRESS}" --keystore-path /raiden/keystore --password-file /raiden/password.txt --eth-rpc-endpoint "${ETH_RPC_ENDPIONT}" --network-id goerli --environment-type development --development-environment unstable --api-address "0.0.0.0:5001" --accept-disclaimer
     ports:
       - "5001:5001"
     volumes:

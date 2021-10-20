@@ -26,7 +26,7 @@ let make = () => {
       <p> {"TTT: 123 DAI: 1249 RDN: 9311"->React.string} </p>
     </div>
     <div className="grid grid-cols-">
-      <Heading> {"Outgoing streams"->React.string} </Heading> <StreamsTable />
+      <Heading> {"Outgoing streams"->React.string} </Heading> <StreamsTableTemp />
     </div>
   </div>
 }

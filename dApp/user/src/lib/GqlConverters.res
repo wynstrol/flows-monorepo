@@ -1,13 +1,13 @@
 module BigInt = {
-  type t = Ethers.BigNumber.t
-  let parse = Ethers.BigNumber.fromUnsafe
-  let serialize = Ethers.BigNumber.toString
+  type t = BN.t
+  let parse = BN.new_
+  let serialize = BN.toString
 }
 
 module IntToBigInt = {
-  type t = Ethers.BigNumber.t
-  let parse = Ethers.BigNumber.fromInt
-  let serialize = Ethers.BigNumber.toNumber
+  type t = BN.t
+  let parse = BN.newInt_
+  let serialize = BN.toNumber
 }
 
 module Bytes = {

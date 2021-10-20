@@ -17,7 +17,11 @@
     "extendSubscription": "ApolloClient.GraphQL_PPX.ExtendSubscription",
     "templateTagReturnType": "ApolloClient.GraphQL_PPX.templateTagReturnType",
     "templateTagImport": "gql",
-    "templateTagLocation": "@apollo/client"
+    "templateTagLocation": "@apollo/client",
+    "custom-fields": {
+      "BigInt": "BigInt",
+      "Bytes": "Bytes"
+    }
   },
   "package-specs": [
     {

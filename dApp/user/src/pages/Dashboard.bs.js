@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import * as Heading$FlowsUserApp from "../components/Heading.bs.js";
-import * as StreamsTable$FlowsUserApp from "../components/StreamsTable.bs.js";
 import * as HeadingVarient$FlowsUserApp from "../components/HeadingVarient.bs.js";
+import * as StreamsTableTemp$FlowsUserApp from "../components/StreamsTableTemp.bs.js";
 
 function Dashboard(Props) {
   return React.createElement("div", {
@@ -38,7 +38,7 @@ function Dashboard(Props) {
                   className: "grid grid-cols-"
                 }, React.createElement(Heading$FlowsUserApp.make, {
                       children: "Outgoing streams"
-                    }), React.createElement(StreamsTable$FlowsUserApp.make, {})));
+                    }), React.createElement(StreamsTableTemp$FlowsUserApp.make, {})));
 }
 
 var make = Dashboard;
