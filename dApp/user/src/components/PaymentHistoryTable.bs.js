@@ -81,7 +81,7 @@ function PaymentHistoryTable$History(Props) {
                                         }, React.createElement("div", {
                                               className: "flex items-center"
                                             }, React.createElement("div", {
-                                                  className: "ml-4"
+                                                  className: ""
                                                 }, React.createElement("div", {
                                                       className: "text-sm font-medium text-gray-900"
                                                     }, fromTimeStampToDate(payment.paymentTimestamp.toNumber())), React.createElement("div", {

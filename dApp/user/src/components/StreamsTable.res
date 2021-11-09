@@ -77,35 +77,43 @@ module Streams = {
                   </div>
                 </div>
               </td>
-              <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
+              <td className="px-2 py-4 whitespace-nowrap text-sm text-black">
                 {stream.paymentToken.name->React.string}
               </td>
-              <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
+              <td className="px-2 py-4 whitespace-nowrap text-sm text-black">
                 {stream.amount->BN.toString->React.string}
               </td>
-              <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
+              <td className="px-2 py-4 whitespace-nowrap text-sm text-black">
                 <div className="flex items-center">
-                  <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">
-                      {stream.nextPayment->BN.toNumber->fromTimeStampToDate->React.string}
+                  <div className="">
+                    <div className="text-sm text-black">
+                      {if stream.state == "OPEN" {
+                        stream.nextPayment->BN.toNumber->fromTimeStampToDate->React.string
+                      } else {
+                        "-"->React.string
+                      }}
                     </div>
-                    <div className="text-sm font-medium text-gray-900">
-                      {stream.nextPayment->BN.toNumber->fromTimeStampToTime->React.string}
+                    <div className="text-sm text-black">
+                      {if stream.state == "OPEN" {
+                        stream.nextPayment->BN.toNumber->fromTimeStampToTime->React.string
+                      } else {
+                        "-"->React.string
+                      }}
                     </div>
                   </div>
                 </div>
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
                 <div className="flex items-center">
-                  <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">
+                  <div className="">
+                    <div className="text-sm text-gray-900">
                       {if stream.lastPayment == 0 {
                         "-"->React.string
                       } else {
                         {stream.lastPayment->fromTimeStampToDate->React.string}
                       }}
                     </div>
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm text-gray-900">
                       {if stream.lastPayment == 0 {
                         "-"->React.string
                       } else {

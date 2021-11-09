@@ -50,8 +50,8 @@ let make = (~openModal) => {
       switch _addUserResult {
       | Ok(_result) =>
         Js.log2("success?", _result)
-        //openModal(_ => false)
-        ReasonReactRouter.push("/contacts")
+        openModal(_ => false)
+      //ReasonReactRouter.push("/contacts")
       | Error(error) => Js.log2("fail?", error)
       }
     )

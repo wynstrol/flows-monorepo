@@ -6,7 +6,6 @@ import * as Formality from "re-formality/src/Formality.bs.js";
 import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
 import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 import * as Form$FlowsUserApp from "./Form.bs.js";
-import * as ReasonReactRouter from "reason-react/src/ReasonReactRouter.bs.js";
 import * as Ethers$FlowsUserApp from "../lib/Ethers/Ethers.bs.js";
 import * as Queries$FlowsUserApp from "../Queries.bs.js";
 import * as Formality__ReactUpdate from "re-formality/src/Formality__ReactUpdate.bs.js";
@@ -605,7 +604,9 @@ function AddContact$1(Props) {
                 }).then(function (_addUserResult) {
                 if (_addUserResult.TAG === /* Ok */0) {
                   console.log("success?", _addUserResult._0);
-                  return ReasonReactRouter.push("/contacts");
+                  return Curry._1(openModal, (function (param) {
+                                return false;
+                              }));
                 }
                 console.log("fail?", _addUserResult._0);
                 

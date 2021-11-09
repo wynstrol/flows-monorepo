@@ -30,7 +30,7 @@ let make = (~redirectOnLogin=true) => {
   <div>
     <p>
       {"Use one of the wallet providers below. "->React.string}
-      <small>
+      /* <small>
         {"(Not sure where to go from here? "->React.string}
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
           <span>
@@ -38,7 +38,7 @@ let make = (~redirectOnLogin=true) => {
           </span>
         </a>
         {")"->React.string}
-      </small>
+      </small>*/
     </p>
     <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
       {connectors
@@ -49,12 +49,11 @@ let make = (~redirectOnLogin=true) => {
           onClick={e => {
             ReactEvent.Mouse.stopPropagation(e)
             activateConnector(connector.connector)
-          }}
-          >
+          }}>
           <div
             className={
               open CssJs
-              style(.[
+              style(. [
                 margin(px(8)),
                 display(#flex),
                 justifyContent(#center),
@@ -79,12 +78,8 @@ let make = (~redirectOnLogin=true) => {
                 }
               />
             </div>
-            <div
-              className="text-3xl font-bold m-1">
-              {connector.name->React.string}
-            </div>
-            <div
-              className="font-large justify-center text-center m-1">
+            <div className="text-3xl font-bold m-1"> {connector.name->React.string} </div>
+            <div className="font-large justify-center text-center m-1">
               {connector.connectionPhrase->React.string}
             </div>
           </div>

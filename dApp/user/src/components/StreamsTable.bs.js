@@ -76,29 +76,29 @@ function StreamsTable$Streams(Props) {
                                                     }, React.createElement(DisplayAddress$FlowsUserApp.make, {
                                                           address: stream.user.ethAddress
                                                         }))))), React.createElement("td", {
-                                          className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
+                                          className: "px-2 py-4 whitespace-nowrap text-sm text-black"
                                         }, stream.paymentToken.name), React.createElement("td", {
-                                          className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
+                                          className: "px-2 py-4 whitespace-nowrap text-sm text-black"
                                         }, stream.amount.toString()), React.createElement("td", {
+                                          className: "px-2 py-4 whitespace-nowrap text-sm text-black"
+                                        }, React.createElement("div", {
+                                              className: "flex items-center"
+                                            }, React.createElement("div", {
+                                                  className: ""
+                                                }, React.createElement("div", {
+                                                      className: "text-sm text-black"
+                                                    }, stream.state === "OPEN" ? fromTimeStampToDate(stream.nextPayment.toNumber()) : "-"), React.createElement("div", {
+                                                      className: "text-sm text-black"
+                                                    }, stream.state === "OPEN" ? fromTimeStampToTime(stream.nextPayment.toNumber()) : "-")))), React.createElement("td", {
                                           className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
                                         }, React.createElement("div", {
                                               className: "flex items-center"
                                             }, React.createElement("div", {
-                                                  className: "ml-4"
+                                                  className: ""
                                                 }, React.createElement("div", {
-                                                      className: "text-sm font-medium text-gray-900"
-                                                    }, fromTimeStampToDate(stream.nextPayment.toNumber())), React.createElement("div", {
-                                                      className: "text-sm font-medium text-gray-900"
-                                                    }, fromTimeStampToTime(stream.nextPayment.toNumber()))))), React.createElement("td", {
-                                          className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
-                                        }, React.createElement("div", {
-                                              className: "flex items-center"
-                                            }, React.createElement("div", {
-                                                  className: "ml-4"
-                                                }, React.createElement("div", {
-                                                      className: "text-sm font-medium text-gray-900"
+                                                      className: "text-sm text-gray-900"
                                                     }, stream.lastPayment === 0 ? "-" : fromTimeStampToDate(stream.lastPayment)), React.createElement("div", {
-                                                      className: "text-sm font-medium text-gray-900"
+                                                      className: "text-sm text-gray-900"
                                                     }, stream.lastPayment === 0 ? "-" : fromTimeStampToTime(stream.lastPayment)))))));
                     })));
   } else {

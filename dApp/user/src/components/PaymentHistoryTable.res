@@ -80,7 +80,7 @@ module History = {
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
                 <div className="flex items-center">
-                  <div className="ml-4">
+                  <div className="">
                     <div className="text-sm font-medium text-gray-900">
                       {payment.paymentTimestamp->BN.toNumber->fromTimeStampToDate->React.string}
                     </div>

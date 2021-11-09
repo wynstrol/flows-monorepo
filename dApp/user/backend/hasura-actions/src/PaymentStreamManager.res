@@ -122,13 +122,14 @@ let updateStreamEntry = (~streamID, ~totalPaymentsMade, ~nextPayment, ~lastPayme
   ->ignore
 }
 
-let closeStreamEntry = (~streamID, ~totalPaymentsMade) => {
+let closeStreamEntry = (~streamID, ~totalPaymentsMade, ~paymentTimestamp) => {
   gqlClient.mutate(
     ~mutation=module(Query.CloseStreamEntry),
     Query.CloseStreamEntry.makeVariables(
       ~id=streamID,
       ~paymentsMade=totalPaymentsMade,
       ~state="CLOSED",
+      ~lastPayment=paymentTimestamp,
       (),
     ),
   )

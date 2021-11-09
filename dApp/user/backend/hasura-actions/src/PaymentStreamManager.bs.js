@@ -282,7 +282,7 @@ function updateStreamEntry(streamID, totalPaymentsMade, nextPayment, lastPayment
   
 }
 
-function closeStreamEntry(streamID, totalPaymentsMade) {
+function closeStreamEntry(streamID, totalPaymentsMade, paymentTimestamp) {
   Curry.app(gqlClient.reason_mutate, [
           {
             query: Query.CloseStreamEntry.query,
@@ -300,7 +300,7 @@ function closeStreamEntry(streamID, totalPaymentsMade) {
           undefined,
           undefined,
           undefined,
-          Query.CloseStreamEntry.makeVariables(streamID, totalPaymentsMade, "CLOSED", undefined)
+          Query.CloseStreamEntry.makeVariables(streamID, totalPaymentsMade, "CLOSED", paymentTimestamp, undefined)
         ]).then(function (result) {
         if (result.TAG === /* Ok */0) {
           console.log("success close entry: CLOSED");

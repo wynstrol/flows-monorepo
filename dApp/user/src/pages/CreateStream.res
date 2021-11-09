@@ -1,11 +1,15 @@
 open Ethers.Utils
 
+let getTimestamp = date => {
+  (date->Js.Date.getTime /. 1000.0)->Int.fromFloat
+}
+
 let validateFloat = interval => {
   let intervalOpt = interval->Belt.Float.fromString
 
   switch intervalOpt {
   | Some(interval) => interval->Ok
-  | None => Error("Please enter a valid float.")
+  | None => Error("Please enter a valid float")
   }
 }
 
@@ -14,14 +18,14 @@ let validateInt = interval => {
 
   switch intervalOpt {
   | Some(interval) => interval->Ok
-  | None => Error("Please enter a valid integer.")
+  | None => Error("Please enter a valid integer")
   }
 }
 
 let validateAddress = address => {
   switch address->getAddress {
   | Some(a) => a->ethAdrToStr->Ok
-  | None => Error("Please enter a valid address.")
+  | None => Error("Please enter a valid address")
   }
 }
 
@@ -33,6 +37,7 @@ module CreatePaymentStreamForm = %form(
     numberOfPayments: string,
     tokenAddress: string,
     startPayment: string,
+    startTime: string,
   }
   type output = {
     userAddress: string,
@@ -41,6 +46,7 @@ module CreatePaymentStreamForm = %form(
     numberOfPayments: int,
     tokenAddress: string,
     startPayment: int,
+    startTime: string,
   }
   let validators = {
     userAddress: {
@@ -57,7 +63,7 @@ module CreatePaymentStreamForm = %form(
           // do this properly at some stage
           amount->Ok
         } else {
-          Error("Amount must have a length greater than zero!")
+          Error("Please enter a valid amount")
         }
       },
     },
@@ -85,6 +91,17 @@ module CreatePaymentStreamForm = %form(
         validateInt(startPayment)
       },
     },
+    startTime: {
+      strategy: OnFirstBlur,
+      validate: ({startTime}) => {
+        if startTime->Js.String.length > 0 {
+          // do this properly at some stage
+          startTime->Ok
+        } else {
+          Error("Please enter a valid starting time")
+        }
+      },
+    },
   }
 )
 
@@ -95,6 +112,7 @@ let initialInput: CreatePaymentStreamForm.input = {
   numberOfPayments: "",
   tokenAddress: "",
   startPayment: "",
+  startTime: "",
 }
 
 @react.component
@@ -102,7 +120,7 @@ let make = () => {
   let (createProfileMutate, _createProfileMutateResult) = Queries.CreatePaymentStream.use()
   /// $amount: String!, $interval: Int!, $numberOfPayments: Int!, $recipient: String!, $startPayment: Int!, $state: String, $tokenAddress: String!
   let form = CreatePaymentStreamForm.useForm(~initialInput, ~onSubmit=(
-    {userAddress, amount, interval, numberOfPayments, tokenAddress, startPayment},
+    {userAddress, amount, interval, numberOfPayments, tokenAddress, startTime},
     _form,
   ) => {
     let _ = createProfileMutate({
@@ -111,12 +129,11 @@ let make = () => {
       interval: interval,
       numberOfPayments: numberOfPayments,
       tokenAddress: tokenAddress,
-      startPayment: startPayment,
+      startPayment: Js.Date.fromString(startTime)->getTimestamp,
     })->JsPromise.map(_createProfileMutateResult =>
       switch _createProfileMutateResult {
       | Ok(_result) => {
           Js.log2("success?", _result)
-
           ReasonReactRouter.push("/")
         }
       | Error(error) => Js.log2("fail?", error)
@@ -147,7 +164,7 @@ let make = () => {
       <Heading> {"Create Stream"->React.string} </Heading>
       <Form.Input
         label={"address"}
-        title={"Recipient "}
+        title={"Recipient"}
         value={form.input.userAddress}
         disabled={form.submitting}
         blur={form.blurUserAddress}
@@ -160,7 +177,7 @@ let make = () => {
       <br />
       <Form.Input
         label={"amount"}
-        title={"Amount "}
+        title={"Amount"}
         value={form.input.amount}
         disabled={form.submitting}
         blur={form.blurAmount}
@@ -173,7 +190,7 @@ let make = () => {
       <br />
       <Form.Input
         label={"interval"}
-        title={"Interval "}
+        title={"Interval (Minutes)"}
         value={form.input.interval}
         disabled={form.submitting}
         blur={form.blurInterval}
@@ -186,7 +203,7 @@ let make = () => {
       <br />
       <Form.Input
         label={"numberPayments"}
-        title={"Number of payments"}
+        title={"Number of Payments"}
         value={form.input.numberOfPayments}
         disabled={form.submitting}
         blur={form.blurNumberOfPayments}
@@ -210,17 +227,17 @@ let make = () => {
         result={form.tokenAddressResult}
       />
       <br />
-      <Form.Input
-        label={"startPayment"}
-        title={"Start Payment"}
-        value={form.input.startPayment}
+      <Form.DateTimeInput
+        label={"datetime"}
+        title={"Start Time"}
+        value={form.input.startTime}
         disabled={form.submitting}
-        blur={form.blurStartPayment}
-        updateCurried={form.updateStartPayment((input, value) => {
+        blur={form.blurStartTime}
+        updateCurried={form.updateStartTime((input, value) => {
           ...input,
-          startPayment: value,
+          startTime: value,
         })}
-        result={form.startPaymentResult}
+        result={form.startTimeResult}
       />
       <br />
       <button
@@ -229,10 +246,10 @@ let make = () => {
       </button>
     </Form>
     <br />
-    <input
+    /* <input
       type_="datetime-local"
       id="birthdaytime"
       className="border py-2 px-3 text-black w-full rounded border-black bg-white hover:bg-black hover:text-white"
-    />
+    />*/
   </div>
 }

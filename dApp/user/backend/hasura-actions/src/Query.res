@@ -74,8 +74,8 @@ module GetStreamData = %graphql(`
 `)
 
 module CloseStreamEntry = %graphql(`
-  mutation CloseStreamEntry ($id: Int!, $paymentsMade: Int!, $state: String!){
-    update_streams_by_pk(pk_columns: {id: $id}, _set: {numberOfPaymentsMade: $paymentsMade, state: $state}) {
+  mutation CloseStreamEntry ($id: Int!, $paymentsMade: Int!, $state: String!, $lastPayment: Int!){
+    update_streams_by_pk(pk_columns: {id: $id}, _set: {numberOfPaymentsMade: $paymentsMade, state: $state, lastPayment: $lastPayment}) {
       id
       state
     }

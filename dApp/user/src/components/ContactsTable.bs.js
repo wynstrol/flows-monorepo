@@ -51,11 +51,7 @@ function ContactsTable$Contacts(Props) {
                                                       className: "text-sm text-gray-500"
                                                     }, contact.ethAddress)))), React.createElement("td", {
                                           className: "px-6 py-4 whitespace-nowrap text-sm text-black"
-                                        }, "None"), React.createElement("td", {
-                                          className: "px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-                                        }, React.createElement("button", {
-                                              className: "mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded"
-                                            }, "Delete"))));
+                                        }, "None")));
                     })));
   } else {
     return React.createElement("p", undefined, "No Contacts");

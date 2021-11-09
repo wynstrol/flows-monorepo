@@ -31,11 +31,7 @@ function Login(Props) {
         nextPath,
         optCurrentUser
       ]);
-  return React.createElement("div", undefined, React.createElement("p", undefined, "Use one of the wallet providers below. ", React.createElement("small", undefined, "(Not sure where to go from here? ", React.createElement("a", {
-                          href: "https://google.com",
-                          rel: "noopener noreferrer",
-                          target: "_blank"
-                        }, React.createElement("span", undefined, "TODO: put a guide in the blog or something that users can read on if they are confused")), ")")), React.createElement("div", {
+  return React.createElement("div", undefined, React.createElement("p", undefined, "Use one of the wallet providers below. "), React.createElement("div", {
                   className: "grid grid-cols-1 gap-3 md:grid-cols-3"
                 }, Belt_Array.mapWithIndex(connectors, (function (index, connector) {
                         return React.createElement("div", {

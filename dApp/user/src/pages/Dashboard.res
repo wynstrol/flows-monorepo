@@ -2,8 +2,11 @@
 let make = () => {
   <div className="container max-w-3xl mx-auto">
     <div className="border-gray-500 border-2 rounded-lg">
-      <div className="m-2"> <Heading> {"Raiden Node"->React.string} </Heading> </div>
-      <div className="m-2 grid grid-cols-1 gap-4 md:grid-cols-1">
+      <div className="mt-1 -mb-1"> <Heading> {"Raiden Node"->React.string} </Heading> </div>
+      <div className="text-center text-sm text-gray-500">
+        {"0x2D5ED5dc97adC88bBDf69814B90F64a4C5495D81"->React.string}
+      </div>
+      <div className="m-1 grid grid-cols-1 gap-4 md:grid-cols-1">
         <div className="text-center">
           //<HeadingVarient> {""->React.string} </HeadingVarient>
           <button
@@ -29,13 +32,13 @@ let make = () => {
           </button>
         </div>
       </div>
-      <div className="m-2 text-center">
+      <div className="m-1 text-center">
         <Heading> {"Token Balances"->React.string} </Heading>
-        <div className="m-1"> <p> {"TTT: 123"->React.string} </p> </div>
+        <div className="mb-2"> <p> {"TTT: 123"->React.string} </p> </div>
       </div>
     </div>
     <div className="mt-2 border-gray-500 border-2 rounded-lg">
-      <div className="m-2   grid grid-cols-">
+      <div className="m-2 grid grid-cols-">
         <Heading> {"Streams"->React.string} </Heading> <StreamsTable />
       </div>
     </div>

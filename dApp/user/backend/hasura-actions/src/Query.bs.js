@@ -616,8 +616,8 @@ var GetStreamData = {
 var Raw$5 = {};
 
 var query$5 = (require("@apollo/client").gql`
-  mutation CloseStreamEntry($id: Int!, $paymentsMade: Int!, $state: String!)  {
-    update_streams_by_pk(pk_columns: {id: $id}, _set: {numberOfPaymentsMade: $paymentsMade, state: $state})  {
+  mutation CloseStreamEntry($id: Int!, $paymentsMade: Int!, $state: String!, $lastPayment: Int!)  {
+    update_streams_by_pk(pk_columns: {id: $id}, _set: {numberOfPaymentsMade: $paymentsMade, state: $state, lastPayment: $lastPayment})  {
       __typename
       id
       state
@@ -660,15 +660,17 @@ function serializeVariables$5(inp) {
   return {
           id: inp.id,
           paymentsMade: inp.paymentsMade,
-          state: inp.state
+          state: inp.state,
+          lastPayment: inp.lastPayment
         };
 }
 
-function makeVariables$5(id, paymentsMade, state, param) {
+function makeVariables$5(id, paymentsMade, state, lastPayment, param) {
   return {
           id: id,
           paymentsMade: paymentsMade,
-          state: state
+          state: state,
+          lastPayment: lastPayment
         };
 }
 

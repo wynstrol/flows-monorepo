@@ -44,15 +44,15 @@ function makePayment(recipientAddress, paymentData) {
   console.log("finalPayment ", finalPayment.toString());
   var finalAmount = paymentData.amount.mul(finalPayment);
   console.log("finalAmount ", finalAmount.toString());
-  PaymentStreamManager.addPaymentEntry(paymentData.streamID, paymentData.nextPayment.toNumber(), finalAmount.toString());
+  PaymentStreamManager.addPaymentEntry(paymentData.streamID, paymentData.currentPayment.toNumber(), finalAmount.toString());
   var totalPayments = paymentData.numberOfPaymentsMade.add(finalPayment);
   if (paymentData.numberOfPayments.eq(totalPayments)) {
-    PaymentStreamManager.closeStreamEntry(paymentData.streamID, paymentData.numberOfPayments.toNumber());
+    PaymentStreamManager.closeStreamEntry(paymentData.streamID, paymentData.numberOfPayments.toNumber(), paymentData.currentPayment.toNumber());
   } else {
     var newPaymentsMade = paymentData.numberOfPaymentsMade.add(finalPayment);
     var intervalInSeconds$1 = paymentData.interval.mul(CONSTANTS.big60);
     var newNextPayment = paymentData.nextPayment.add(finalPayment.mul(intervalInSeconds$1));
-    PaymentStreamManager.updateStreamEntry(paymentData.streamID, newPaymentsMade.toNumber(), newNextPayment.toNumber(), paymentData.nextPayment.toNumber());
+    PaymentStreamManager.updateStreamEntry(paymentData.streamID, newPaymentsMade.toNumber(), newNextPayment.toNumber(), paymentData.currentPayment.toNumber());
   }
   var address = Belt_Option.getWithDefault(process.env.HUB_ADDRESS, "http://raiden1:5001");
   var requestString = address + "/api/v1/payments/0xC563388e2e2fdD422166eD5E76971D11eD37A466/" + recipientAddress;

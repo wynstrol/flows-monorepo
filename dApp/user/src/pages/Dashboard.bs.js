@@ -11,11 +11,13 @@ function Dashboard(Props) {
             }, React.createElement("div", {
                   className: "border-gray-500 border-2 rounded-lg"
                 }, React.createElement("div", {
-                      className: "m-2"
+                      className: "mt-1 -mb-1"
                     }, React.createElement(Heading$FlowsUserApp.make, {
                           children: "Raiden Node"
                         })), React.createElement("div", {
-                      className: "m-2 grid grid-cols-1 gap-4 md:grid-cols-1"
+                      className: "text-center text-sm text-gray-500"
+                    }, "0x2D5ED5dc97adC88bBDf69814B90F64a4C5495D81"), React.createElement("div", {
+                      className: "m-1 grid grid-cols-1 gap-4 md:grid-cols-1"
                     }, React.createElement("div", {
                           className: "text-center"
                         }, React.createElement("button", {
@@ -37,15 +39,15 @@ function Dashboard(Props) {
                                   
                                 })
                             }, "Send"))), React.createElement("div", {
-                      className: "m-2 text-center"
+                      className: "m-1 text-center"
                     }, React.createElement(Heading$FlowsUserApp.make, {
                           children: "Token Balances"
                         }), React.createElement("div", {
-                          className: "m-1"
+                          className: "mb-2"
                         }, React.createElement("p", undefined, "TTT: 123")))), React.createElement("div", {
                   className: "mt-2 border-gray-500 border-2 rounded-lg"
                 }, React.createElement("div", {
-                      className: "m-2   grid grid-cols-"
+                      className: "m-2 grid grid-cols-"
                     }, React.createElement(Heading$FlowsUserApp.make, {
                           children: "Streams"
                         }), React.createElement(StreamsTable$FlowsUserApp.make, {}))), React.createElement("div", {

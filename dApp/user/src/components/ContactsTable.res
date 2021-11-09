@@ -55,7 +55,7 @@ module Contacts = {
               <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                 {"None"->React.string}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              /* <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 //<a href="#" className="text-indigo-600 hover:text-indigo-900">
                 // {"Delete"->React.string}
                 //</a>
@@ -64,7 +64,7 @@ module Contacts = {
                   className="mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded">
                   {"Delete"->React.string}
                 </button>
-              </td>
+              </td>*/
             </tr>
           </tbody>
         })

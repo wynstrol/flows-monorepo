@@ -38,7 +38,7 @@ let makePayment = (~recipientAddress, ~paymentData: streamData) => {
   Js.log2("finalAmount ", finalAmount->BN.toString)
   PaymentStreamManager.addPaymentEntry(
     ~streamID=paymentData.streamID,
-    ~timestamp=paymentData.nextPayment->BN.toNumber,
+    ~timestamp=paymentData.currentPayment->BN.toNumber,
     ~amount=finalAmount->BN.toString,
   )
   let totalPayments = BN.add(paymentData.numberOfPaymentsMade, finalPayment)
@@ -46,6 +46,7 @@ let makePayment = (~recipientAddress, ~paymentData: streamData) => {
     PaymentStreamManager.closeStreamEntry(
       ~streamID=paymentData.streamID,
       ~totalPaymentsMade=paymentData.numberOfPayments->BN.toNumber,
+      ~paymentTimestamp=paymentData.currentPayment->BN.toNumber,
     )
   } else {
     let newPaymentsMade = BN.add(paymentData.numberOfPaymentsMade, finalPayment)
@@ -55,7 +56,7 @@ let makePayment = (~recipientAddress, ~paymentData: streamData) => {
       ~streamID=paymentData.streamID,
       ~totalPaymentsMade=newPaymentsMade->BN.toNumber,
       ~nextPayment=newNextPayment->BN.toNumber,
-      ~lastPayment=paymentData.nextPayment->BN.toNumber,
+      ~lastPayment=paymentData.currentPayment->BN.toNumber,
     )
   }
   let address = hubAddress->Option.getWithDefault("http://raiden1:5001")
