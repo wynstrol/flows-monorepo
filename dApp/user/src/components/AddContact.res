@@ -46,8 +46,17 @@ let make = (~openModal) => {
       address: address,
       name: name,
       description: description,
-    })
+    })->JsPromise.map(_addUserResult =>
+      switch _addUserResult {
+      | Ok(_result) =>
+        Js.log2("success?", _result)
+        //openModal(_ => false)
+        ReasonReactRouter.push("/contacts")
+      | Error(error) => Js.log2("fail?", error)
+      }
+    )
   })
+
   <div
     className="fixed z-10 inset-0 overflow-y-auto"
     ariaLabelledby="modal-title"
@@ -117,7 +126,6 @@ let make = (~openModal) => {
                     />
                     <div className="bg-gray-50 py-3 sm:flex sm:flex-row-reverse">
                       <button
-                        onClick={_ => openModal(_ => false)}
                         className="w-full inline-flex justify-center border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500  sm:w-auto sm:text-sm">
                         {"Add contact"->React.string}
                       </button>

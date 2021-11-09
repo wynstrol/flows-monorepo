@@ -1,0 +1,8 @@
+- args:
+    name: paymentToken
+    table:
+      name: streams
+      schema: public
+    using:
+      foreign_key_constraint_on: tokenAddress
+  type: create_object_relationship

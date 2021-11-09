@@ -6,22 +6,22 @@ let fromTimeStampToTime = timestamp => {
   (timestamp->Float.fromInt *. 1000.0)->Js.Date.fromFloat->Js.Date.toLocaleTimeString
 }
 
-module Streams = {
+module History = {
   @react.component
   let make = (
-    ~streamsQuery: ApolloClient__React_Hooks_UseQuery.QueryResult.t<
-      FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.t,
-      FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.Raw.t,
-      FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.t_variables,
-      FlowsUserApp.Queries.ViewPaymentsStreams.ViewPaymentsStreams_inner.Raw.t_variables,
+    ~paymentHistoryQuery: ApolloClient__React_Hooks_UseQuery.QueryResult.t<
+      FlowsUserApp.Queries.ViewPaymentHistory.ViewPaymentHistory_inner.t,
+      FlowsUserApp.Queries.ViewPaymentHistory.ViewPaymentHistory_inner.Raw.t,
+      FlowsUserApp.Queries.ViewPaymentHistory.ViewPaymentHistory_inner.t_variables,
+      FlowsUserApp.Queries.ViewPaymentHistory.ViewPaymentHistory_inner.Raw.t_variables,
     >,
   ) => {
-    switch streamsQuery {
+    switch paymentHistoryQuery {
     | {loading: true, data: None} => <p> {"Loading"->React.string} </p>
     | {error: Some(error)} =>
       Js.log(error)
       <p> {"Data is loaded"->React.string} </p>
-    | {data: Some({streams})} =>
+    | {data: Some({payments})} =>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-black">
           <tr>
@@ -43,12 +43,7 @@ module Streams = {
             <th
               scope="col"
               className="px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-              {"Next Payment"->React.string}
-            </th>
-            <th
-              scope="col"
-              className="px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-              {"Last Payment"->React.string}
+              {"Payment Timestamp"->React.string}
             </th>
             <th scope="col" className="relative px-5 py-4">
               <span className="sr-only"> {"Edit"->React.string} </span>
@@ -58,59 +53,39 @@ module Streams = {
             </th>
           </tr>
         </thead>
-        {streams
-        ->Array.map(stream => {
-          <tbody key={Belt.Int.toString(stream.id)} className="bg-white divide-y divide-black">
+        {payments
+        ->Array.map(payment => {
+          <tbody key={Belt.Int.toString(payment.id)} className="bg-white divide-y divide-black">
             <tr>
               <td className="px-2 py-4 whitespace-nowrap">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 h-10 w-10">
-                    <img src={Blockies.makeBlockie(stream.user.ethAddress)} />
+                    <img src={Blockies.makeBlockie(payment.stream.user.ethAddress)} />
                   </div>
                   <div className="ml-4">
                     <div className="text-sm font-medium text-gray-900">
-                      {stream.user.name->React.string}
+                      {payment.stream.user.name->React.string}
                     </div>
                     <div className="text-sm text-gray-500">
-                      <DisplayAddress address=stream.user.ethAddress />
+                      <DisplayAddress address=payment.stream.user.ethAddress />
                     </div>
                   </div>
                 </div>
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
-                {stream.paymentToken.name->React.string}
+                {payment.stream.paymentToken.name->React.string}
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
-                {stream.amount->BN.toString->React.string}
-              </td>
-              <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
-                <div className="flex items-center">
-                  <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">
-                      {stream.nextPayment->BN.toNumber->fromTimeStampToDate->React.string}
-                    </div>
-                    <div className="text-sm font-medium text-gray-900">
-                      {stream.nextPayment->BN.toNumber->fromTimeStampToTime->React.string}
-                    </div>
-                  </div>
-                </div>
+                {payment.paymentAmount->BN.toString->React.string}
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
                 <div className="flex items-center">
                   <div className="ml-4">
                     <div className="text-sm font-medium text-gray-900">
-                      {if stream.lastPayment == 0 {
-                        "-"->React.string
-                      } else {
-                        {stream.lastPayment->fromTimeStampToDate->React.string}
-                      }}
+                      {payment.paymentTimestamp->BN.toNumber->fromTimeStampToDate->React.string}
                     </div>
                     <div className="text-sm font-medium text-gray-900">
-                      {if stream.lastPayment == 0 {
-                        "-"->React.string
-                      } else {
-                        {stream.lastPayment->fromTimeStampToTime->React.string}
-                      }}
+                      {payment.paymentTimestamp->BN.toNumber->fromTimeStampToTime->React.string}
                     </div>
                   </div>
                 </div>
@@ -127,13 +102,13 @@ module Streams = {
 
 @react.component
 let make = () => {
-  let streamsQuery = Queries.ViewPaymentsStreams.use()
+  let paymentHistoryQuery = Queries.ViewPaymentHistory.use()
 
   <div className="flex flex-col">
     <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div className="py-2 align-middle inline-block min-w-full sm:px-2 lg:px-8">
         <div className="shadow overflow-hidden border border-black rounded">
-          <Streams streamsQuery />
+          <History paymentHistoryQuery />
         </div>
       </div>
     </div>

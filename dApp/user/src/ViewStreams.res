@@ -115,13 +115,17 @@ let make = () => {
 
   let (isOpen, setIsOpen) = React.useState(_ => true)
 
-  let viewOpenStreamsQuery = Queries.ViewPaymentsStreams.use({
+  /* let viewOpenStreamsQuery = Queries.ViewPaymentsStreams.use({
     {state: "OPEN"}
   })
 
   let viewClosedStreamsQuery = Queries.ViewPaymentsStreams.use({
     {state: "CLOSED"}
-  })
+  })*/
+
+  let viewOpenStreamsQuery = Queries.ViewPaymentsStreams.use()
+
+  let viewClosedStreamsQuery = Queries.ViewPaymentsStreams.use()
 
   <>
     <h2> {`${isOpen ? "OPEN" : "CLOSED"} STREAMS`->React.string} </h2>

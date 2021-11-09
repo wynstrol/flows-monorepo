@@ -5,7 +5,7 @@ import * as React from "react";
 function Heading(Props) {
   var children = Props.children;
   return React.createElement("h1", {
-              className: "text-xl"
+              className: "text-3xl font-bold text-center"
             }, children);
 }
 

@@ -18,9 +18,24 @@ function ContactsTable$Contacts(Props) {
     return React.createElement("p", undefined, "Data is loaded");
   } else if (match !== undefined) {
     return React.createElement("table", {
-                id: "user"
-              }, React.createElement("tbody", undefined, Belt_Array.map(match.user, (function (contact) {
-                          return React.createElement("tr", undefined, React.createElement("td", {
+                className: "min-w-full divide-y divide-gray-200"
+              }, React.createElement("thead", {
+                    className: "bg-black"
+                  }, React.createElement("tr", undefined, React.createElement("th", {
+                            className: "px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider",
+                            scope: "col"
+                          }, "Name"), React.createElement("th", {
+                            className: "px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider",
+                            scope: "col"
+                          }, "Description"), React.createElement("th", {
+                            className: "relative px-6 py-3",
+                            scope: "col"
+                          }, React.createElement("span", {
+                                className: "sr-only"
+                              }, "Edit")))), Belt_Array.map(match.user, (function (contact) {
+                      return React.createElement("tbody", {
+                                  className: "bg-white divide-y divide-gray-200"
+                                }, React.createElement("tr", undefined, React.createElement("td", {
                                           className: "px-6 py-4 whitespace-nowrap"
                                         }, React.createElement("div", {
                                               className: "flex items-center"
@@ -35,16 +50,15 @@ function ContactsTable$Contacts(Props) {
                                                     }, contact.name), React.createElement("div", {
                                                       className: "text-sm text-gray-500"
                                                     }, contact.ethAddress)))), React.createElement("td", {
-                                          className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                                          className: "px-6 py-4 whitespace-nowrap text-sm text-black"
                                         }, "None"), React.createElement("td", {
                                           className: "px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-                                        }, React.createElement("a", {
-                                              className: "text-indigo-600 hover:text-indigo-900",
-                                              href: "#"
-                                            }, "Edit")));
-                        }))));
+                                        }, React.createElement("button", {
+                                              className: "mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded"
+                                            }, "Delete"))));
+                    })));
   } else {
-    return React.createElement("p", undefined, "Error loading data");
+    return React.createElement("p", undefined, "No Contacts");
   }
 }
 
@@ -69,34 +83,32 @@ function ContactsTable(Props) {
         undefined,
         undefined
       ]);
+  Curry.app(Queries$FlowsUserApp.RemoveUser.use, [
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined
+      ]);
   return React.createElement("div", {
-              className: "flex flex-col"
+              className: "m-2 flex flex-col"
             }, React.createElement("div", {
                   className: "my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"
                 }, React.createElement("div", {
                       className: "py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
                     }, React.createElement("div", {
-                          className: "shadow overflow-hidden border-b border-gray-200"
-                        }, React.createElement("table", {
-                              className: "min-w-full divide-y divide-gray-200"
-                            }, React.createElement("thead", {
-                                  className: "bg-gray-50"
-                                }, React.createElement("tr", undefined, React.createElement("th", {
-                                          className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                          scope: "col"
-                                        }, "Name"), React.createElement("th", {
-                                          className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                          scope: "col"
-                                        }, "Description"), React.createElement("th", {
-                                          className: "relative px-6 py-3",
-                                          scope: "col"
-                                        }, React.createElement("span", {
-                                              className: "sr-only"
-                                            }, "Edit")))), React.createElement("tbody", {
-                                  className: "bg-white divide-y divide-gray-200"
-                                }, React.createElement(ContactsTable$Contacts, {
-                                      contactsQuery: contactsQuery
-                                    })))))));
+                          className: "shadow overflow-hidden border border-black rounded"
+                        }, React.createElement(ContactsTable$Contacts, {
+                              contactsQuery: contactsQuery
+                            })))));
 }
 
 var make = ContactsTable;

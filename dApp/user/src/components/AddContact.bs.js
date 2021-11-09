@@ -6,6 +6,7 @@ import * as Formality from "re-formality/src/Formality.bs.js";
 import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
 import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 import * as Form$FlowsUserApp from "./Form.bs.js";
+import * as ReasonReactRouter from "reason-react/src/ReasonReactRouter.bs.js";
 import * as Ethers$FlowsUserApp from "../lib/Ethers/Ethers.bs.js";
 import * as Queries$FlowsUserApp from "../Queries.bs.js";
 import * as Formality__ReactUpdate from "re-formality/src/Formality__ReactUpdate.bs.js";
@@ -598,9 +599,16 @@ function AddContact$1(Props) {
   var addUser = match[0];
   var form = useForm(initialInput, (function (param, param$1) {
           Curry._8(addUser, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
-                name: param.name,
-                address: param.address,
-                description: param.description
+                  name: param.name,
+                  address: param.address,
+                  description: param.description
+                }).then(function (_addUserResult) {
+                if (_addUserResult.TAG === /* Ok */0) {
+                  console.log("success?", _addUserResult._0);
+                  return ReasonReactRouter.push("/contacts");
+                }
+                console.log("fail?", _addUserResult._0);
+                
               });
           
         }));
@@ -698,12 +706,7 @@ function AddContact$1(Props) {
                                                 }), React.createElement("div", {
                                                   className: "bg-gray-50 py-3 sm:flex sm:flex-row-reverse"
                                                 }, React.createElement("button", {
-                                                      className: "w-full inline-flex justify-center border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500  sm:w-auto sm:text-sm",
-                                                      onClick: (function (param) {
-                                                          return Curry._1(openModal, (function (param) {
-                                                                        return false;
-                                                                      }));
-                                                        })
+                                                      className: "w-full inline-flex justify-center border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500  sm:w-auto sm:text-sm"
                                                     }, "Add contact")))))))))));
 }
 

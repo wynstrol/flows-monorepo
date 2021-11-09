@@ -4,11 +4,29 @@ import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Belt_Int from "bs-platform/lib/es6/belt_Int.js";
 import * as Formality from "re-formality/src/Formality.bs.js";
+import * as Belt_Float from "bs-platform/lib/es6/belt_Float.js";
 import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
 import * as Form$FlowsUserApp from "../components/Form.bs.js";
+import * as ReasonReactRouter from "reason-react/src/ReasonReactRouter.bs.js";
 import * as Ethers$FlowsUserApp from "../lib/Ethers/Ethers.bs.js";
+import * as Heading$FlowsUserApp from "../components/Heading.bs.js";
 import * as Queries$FlowsUserApp from "../Queries.bs.js";
 import * as Formality__ReactUpdate from "re-formality/src/Formality__ReactUpdate.bs.js";
+
+function validateFloat(interval) {
+  var intervalOpt = Belt_Float.fromString(interval);
+  if (intervalOpt !== undefined) {
+    return {
+            TAG: /* Ok */0,
+            _0: intervalOpt
+          };
+  } else {
+    return {
+            TAG: /* Error */1,
+            _0: "Please enter a valid float."
+          };
+  }
+}
 
 function validateInt(interval) {
   var intervalOpt = Belt_Int.fromString(interval);
@@ -20,7 +38,7 @@ function validateInt(interval) {
   } else {
     return {
             TAG: /* Error */1,
-            _0: "Must be a valid int >:("
+            _0: "Please enter a valid integer."
           };
   }
 }
@@ -35,7 +53,7 @@ function validateAddress(address) {
   } else {
     return {
             TAG: /* Error */1,
-            _0: "Must be a valid address"
+            _0: "Please enter a valid address."
           };
   }
 }
@@ -872,26 +890,33 @@ function CreateStream(Props) {
   var createProfileMutate = match[0];
   var form = useForm(initialInput, (function (param, _form) {
           Curry._8(createProfileMutate, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
-                amount: param.amount,
-                interval: param.interval,
-                numberOfPayments: param.numberOfPayments,
-                recipient: param.userAddress,
-                startPayment: param.startPayment,
-                tokenAddress: param.tokenAddress
+                  amount: param.amount,
+                  interval: param.interval,
+                  numberOfPayments: param.numberOfPayments,
+                  recipient: param.userAddress,
+                  startPayment: param.startPayment,
+                  tokenAddress: param.tokenAddress
+                }).then(function (_createProfileMutateResult) {
+                if (_createProfileMutateResult.TAG === /* Ok */0) {
+                  console.log("success?", _createProfileMutateResult._0);
+                  return ReasonReactRouter.push("/");
+                }
+                console.log("fail?", _createProfileMutateResult._0);
+                
               });
           
         }));
   return React.createElement("div", {
-              className: "border-2 border-black p-3 container max-w-3xl mx-auto rounded"
+              className: "border-2 border-gray-500 p-3 container max-w-3xl mx-auto rounded-lg"
             }, React.createElement(Form$FlowsUserApp.make, {
                   className: "",
                   onSubmit: (function (param) {
                       return Curry._1(form.submit, undefined);
                     }),
                   children: null
-                }, React.createElement("h1", {
-                      className: "text-2xl pb-2"
-                    }, "Create Stream"), React.createElement(Form$FlowsUserApp.Input.make, {
+                }, React.createElement(Heading$FlowsUserApp.make, {
+                      children: "Create Stream"
+                    }), React.createElement(Form$FlowsUserApp.Input.make, {
                       label: "address",
                       title: "Recipient ",
                       value: form.input.userAddress,
@@ -994,17 +1019,18 @@ function CreateStream(Props) {
                       result: form.startPaymentResult,
                       disabled: form.submitting
                     }), React.createElement("br", undefined), React.createElement("button", {
-                      className: "mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded",
-                      onClick: (function (param) {
-                          console.log("clicked");
-                          
-                        })
-                    }, "CREATE STREAM")));
+                      className: "mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded"
+                    }, "CREATE STREAM")), React.createElement("br", undefined), React.createElement("input", {
+                  className: "border py-2 px-3 text-black w-full rounded border-black bg-white hover:bg-black hover:text-white",
+                  id: "birthdaytime",
+                  type: "datetime-local"
+                }));
 }
 
 var make = CreateStream;
 
 export {
+  validateFloat ,
   validateInt ,
   validateAddress ,
   CreatePaymentStreamForm ,

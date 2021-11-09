@@ -20,3 +20,4 @@ type t
 
 @new @module external new_: string => t = "bn.js"
 @new @module external newInt_: int => t = "bn.js"
+@new @module external newFloat_: float => t = "bn.js"

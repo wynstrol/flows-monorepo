@@ -35,6 +35,13 @@ tables:
 - table:
     schema: public
     name: streams
+  object_relationships:
+  - name: paymentToken
+    using:
+      foreign_key_constraint_on: tokenAddress
+  - name: user
+    using:
+      foreign_key_constraint_on: recipient
   select_permissions:
   - role: user
     permission:

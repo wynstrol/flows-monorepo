@@ -4504,7 +4504,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Int",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -4984,18 +4984,6 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "paymentAmount",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "args": [],
-            "isDeprecated": false,
-            "deprecationReason": null,
             "name": "paymentTimestamp",
             "type": {
               "kind": "SCALAR",
@@ -5022,16 +5010,6 @@
         "inputFields": [
           {
             "name": "id",
-            "defaultValue": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "name": "paymentAmount",
             "defaultValue": null,
             "type": {
               "kind": "ENUM",
@@ -5124,7 +5102,7 @@
             "defaultValue": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Int_comparison_exp",
+              "name": "String_comparison_exp",
               "ofType": null
             },
             "description": null
@@ -5208,16 +5186,6 @@
             "description": null
           },
           {
-            "name": "paymentAmount",
-            "defaultValue": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
             "name": "paymentTimestamp",
             "defaultValue": null,
             "type": {
@@ -5263,7 +5231,7 @@
             "defaultValue": null,
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
             "description": null
@@ -5345,7 +5313,7 @@
             "name": "paymentAmount",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
             "description": null
@@ -5455,7 +5423,7 @@
             "name": "paymentAmount",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
             "description": null
@@ -5834,7 +5802,7 @@
             "defaultValue": null,
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             },
             "description": null
@@ -5903,18 +5871,6 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "paymentAmount",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "args": [],
-            "isDeprecated": false,
-            "deprecationReason": null,
             "name": "paymentTimestamp",
             "type": {
               "kind": "SCALAR",
@@ -5941,16 +5897,6 @@
         "inputFields": [
           {
             "name": "id",
-            "defaultValue": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "name": "paymentAmount",
             "defaultValue": null,
             "type": {
               "kind": "ENUM",
@@ -6013,18 +5959,6 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "paymentAmount",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "args": [],
-            "isDeprecated": false,
-            "deprecationReason": null,
             "name": "paymentTimestamp",
             "type": {
               "kind": "SCALAR",
@@ -6051,16 +5985,6 @@
         "inputFields": [
           {
             "name": "id",
-            "defaultValue": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "name": "paymentAmount",
             "defaultValue": null,
             "type": {
               "kind": "ENUM",
@@ -6123,18 +6047,6 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "paymentAmount",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "args": [],
-            "isDeprecated": false,
-            "deprecationReason": null,
             "name": "paymentTimestamp",
             "type": {
               "kind": "SCALAR",
@@ -6161,16 +6073,6 @@
         "inputFields": [
           {
             "name": "id",
-            "defaultValue": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "name": "paymentAmount",
             "defaultValue": null,
             "type": {
               "kind": "ENUM",
@@ -6233,18 +6135,6 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "paymentAmount",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "args": [],
-            "isDeprecated": false,
-            "deprecationReason": null,
             "name": "paymentTimestamp",
             "type": {
               "kind": "SCALAR",
@@ -6271,16 +6161,6 @@
         "inputFields": [
           {
             "name": "id",
-            "defaultValue": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "name": "paymentAmount",
             "defaultValue": null,
             "type": {
               "kind": "ENUM",
@@ -6384,18 +6264,6 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "paymentAmount",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "args": [],
-            "isDeprecated": false,
-            "deprecationReason": null,
             "name": "paymentTimestamp",
             "type": {
               "kind": "SCALAR",
@@ -6422,16 +6290,6 @@
         "inputFields": [
           {
             "name": "id",
-            "defaultValue": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "name": "paymentAmount",
             "defaultValue": null,
             "type": {
               "kind": "ENUM",
@@ -6494,18 +6352,6 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "paymentAmount",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "args": [],
-            "isDeprecated": false,
-            "deprecationReason": null,
             "name": "paymentTimestamp",
             "type": {
               "kind": "SCALAR",
@@ -6532,16 +6378,6 @@
         "inputFields": [
           {
             "name": "id",
-            "defaultValue": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "name": "paymentAmount",
             "defaultValue": null,
             "type": {
               "kind": "ENUM",
@@ -6604,18 +6440,6 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
-            "name": "paymentAmount",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "args": [],
-            "isDeprecated": false,
-            "deprecationReason": null,
             "name": "paymentTimestamp",
             "type": {
               "kind": "SCALAR",
@@ -6642,16 +6466,6 @@
         "inputFields": [
           {
             "name": "id",
-            "defaultValue": null,
-            "type": {
-              "kind": "ENUM",
-              "name": "order_by",
-              "ofType": null
-            },
-            "description": null
-          },
-          {
-            "name": "paymentAmount",
             "defaultValue": null,
             "type": {
               "kind": "ENUM",
@@ -7830,6 +7644,22 @@
             "args": [],
             "isDeprecated": false,
             "deprecationReason": null,
+            "name": "paymentToken",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "paymentTokens",
+                "ofType": null
+              }
+            },
+            "description": "An object relationship"
+          },
+          {
+            "args": [],
+            "isDeprecated": false,
+            "deprecationReason": null,
             "name": "recipient",
             "type": {
               "kind": "NON_NULL",
@@ -7889,6 +7719,22 @@
               }
             },
             "description": null
+          },
+          {
+            "args": [],
+            "isDeprecated": false,
+            "deprecationReason": null,
+            "name": "user",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "user",
+                "ofType": null
+              }
+            },
+            "description": "An object relationship"
           }
         ]
       },
@@ -8562,6 +8408,16 @@
             "description": null
           },
           {
+            "name": "paymentToken",
+            "defaultValue": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "paymentTokens_bool_exp",
+              "ofType": null
+            },
+            "description": null
+          },
+          {
             "name": "recipient",
             "defaultValue": null,
             "type": {
@@ -8597,6 +8453,16 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "String_comparison_exp",
+              "ofType": null
+            },
+            "description": null
+          },
+          {
+            "name": "user",
+            "defaultValue": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "user_bool_exp",
               "ofType": null
             },
             "description": null
@@ -8781,6 +8647,16 @@
             "description": null
           },
           {
+            "name": "paymentToken",
+            "defaultValue": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "paymentTokens_obj_rel_insert_input",
+              "ofType": null
+            },
+            "description": null
+          },
+          {
             "name": "recipient",
             "defaultValue": null,
             "type": {
@@ -8816,6 +8692,16 @@
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "description": null
+          },
+          {
+            "name": "user",
+            "defaultValue": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "user_obj_rel_insert_input",
               "ofType": null
             },
             "description": null
@@ -9573,6 +9459,16 @@
             "description": null
           },
           {
+            "name": "paymentToken",
+            "defaultValue": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "paymentTokens_order_by",
+              "ofType": null
+            },
+            "description": null
+          },
+          {
             "name": "recipient",
             "defaultValue": null,
             "type": {
@@ -9608,6 +9504,16 @@
             "type": {
               "kind": "ENUM",
               "name": "order_by",
+              "ofType": null
+            },
+            "description": null
+          },
+          {
+            "name": "user",
+            "defaultValue": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "user_order_by",
               "ofType": null
             },
             "description": null

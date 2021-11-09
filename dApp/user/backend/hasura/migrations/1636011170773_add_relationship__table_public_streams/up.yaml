@@ -1,0 +1,8 @@
+- args:
+    name: user
+    table:
+      name: streams
+      schema: public
+    using:
+      foreign_key_constraint_on: recipient
+  type: create_object_relationship

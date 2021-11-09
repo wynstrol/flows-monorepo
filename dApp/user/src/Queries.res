@@ -15,18 +15,24 @@ module ViewPaymentsStreamsWithAddress = %graphql(`
     }
   }
 `)
-
+//query ViewPaymentsStreams ($state: String!){
+//streams(where: {state: {_eq: $state}}){
 module ViewPaymentsStreams = %graphql(`
-  query ViewPaymentsStreams ($state: String!){
-    streams(where: {state: {_eq: $state}}){
+  query ViewPaymentsStreams{
+    streams{
       id
       amount @ppxCustom(module: "GqlConverters.BigInt")
       interval @ppxCustom(module: "GqlConverters.IntToBigInt")
       numberOfPayments @ppxCustom(module: "GqlConverters.IntToBigInt")
       numberOfPaymentsMade @ppxCustom(module: "GqlConverters.IntToBigInt")
-      recipient
+      user {
+        name
+        ethAddress
+      }
       state
-      tokenAddress
+      paymentToken {
+        name
+      }
       startPayment @ppxCustom(module: "GqlConverters.IntToBigInt")
       nextPayment @ppxCustom(module: "GqlConverters.IntToBigInt")
       lastPayment
@@ -63,13 +69,43 @@ module AddUser = %graphql(`
   }
 `)
 
+module RemoveUser = %graphql(`
+  mutation RemoveUser ($address: String!){
+    delete_user(where: {ethAddress: {_eq: $address}}) {
+      returning {
+        ethAddress
+      }
+    }
+  }
+`)
+
 module GetPaymentHistory = %graphql(`
   query GetPaymentHistory ($streamID: Int!){
     payments(where: {streamID: {_eq: $streamID}}){
       id
-      paymentAmount @ppxCustom(module: "GqlConverters.IntToBigInt")
+      paymentAmount @ppxCustom(module: "GqlConverters.BigInt")
       paymentState
       paymentTimestamp @ppxCustom(module: "GqlConverters.IntToBigInt")
+    }
+  }
+`)
+
+module ViewPaymentHistory = %graphql(`
+  query ViewPaymentHistory{
+    payments(order_by: [{paymentTimestamp: desc}]) {
+      id
+      paymentAmount @ppxCustom(module: "GqlConverters.BigInt")
+      paymentState
+      paymentTimestamp @ppxCustom(module: "GqlConverters.IntToBigInt")
+      stream {
+        paymentToken {
+          name
+        }
+        user {
+          ethAddress
+          name
+        }
+      }
     }
   }
 `)

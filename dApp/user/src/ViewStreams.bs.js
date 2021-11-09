@@ -154,9 +154,7 @@ function ViewStreams(Props) {
         undefined,
         undefined,
         undefined,
-        {
-          state: "OPEN"
-        }
+        undefined
       ]);
   var viewClosedStreamsQuery = Curry.app(Queries$FlowsUserApp.ViewPaymentsStreams.use, [
         undefined,
@@ -172,9 +170,7 @@ function ViewStreams(Props) {
         undefined,
         undefined,
         undefined,
-        {
-          state: "CLOSED"
-        }
+        undefined
       ]);
   return React.createElement(React.Fragment, undefined, React.createElement("h2", undefined, (
                   isOpen ? "OPEN" : "CLOSED"

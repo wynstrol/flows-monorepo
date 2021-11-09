@@ -16,17 +16,19 @@ function Contacts(Props) {
             }, match[0] ? React.createElement(AddContact$FlowsUserApp.make, {
                     openModal: setAddContact
                   }) : null, React.createElement("div", {
-                  className: "flex justify-between"
-                }, React.createElement(Heading$FlowsUserApp.make, {
-                      children: "Contacts"
-                    }), React.createElement("button", {
-                      className: "mt-3 w-full inline-flex justify-center border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm",
-                      onClick: (function (param) {
-                          return Curry._1(setAddContact, (function (param) {
-                                        return true;
-                                      }));
-                        })
-                    }, "Add contact")), React.createElement(ContactsTable$FlowsUserApp.make, {}));
+                  className: "border-gray-500 border-2 rounded-lg"
+                }, React.createElement("div", {
+                      className: "m-2 flex justify-between"
+                    }, React.createElement(Heading$FlowsUserApp.make, {
+                          children: "Contacts"
+                        }), React.createElement("button", {
+                          className: "mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-4 py-2 bg-white text-base font-large text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-lg rounded",
+                          onClick: (function (param) {
+                              return Curry._1(setAddContact, (function (param) {
+                                            return true;
+                                          }));
+                            })
+                        }, "Add contact")), React.createElement(ContactsTable$FlowsUserApp.make, {})));
 }
 
 var make = Contacts;

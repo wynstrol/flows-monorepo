@@ -13,7 +13,9 @@ function Form(Props) {
                   if (!$$event.defaultPrevented) {
                     $$event.preventDefault();
                   }
-                  return Curry._1(onSubmit, undefined);
+                  Curry._1(onSubmit, undefined);
+                  console.log("submit 1");
+                  
                 })
             }, children);
 }

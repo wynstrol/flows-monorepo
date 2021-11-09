@@ -15,13 +15,13 @@ function fromTimeStampToTime(timestamp) {
   return new Date(timestamp * 1000.0).toLocaleTimeString();
 }
 
-function StreamsTable$Streams(Props) {
-  var streamsQuery = Props.streamsQuery;
-  var match = streamsQuery.data;
-  if (match === undefined && streamsQuery.loading) {
+function PaymentHistoryTable$History(Props) {
+  var paymentHistoryQuery = Props.paymentHistoryQuery;
+  var match = paymentHistoryQuery.data;
+  if (match === undefined && paymentHistoryQuery.loading) {
     return React.createElement("p", undefined, "Loading");
   }
-  var error = streamsQuery.error;
+  var error = paymentHistoryQuery.error;
   if (error !== undefined) {
     console.log(error);
     return React.createElement("p", undefined, "Data is loaded");
@@ -42,10 +42,7 @@ function StreamsTable$Streams(Props) {
                           }, "Amount"), React.createElement("th", {
                             className: "px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider",
                             scope: "col"
-                          }, "Next Payment"), React.createElement("th", {
-                            className: "px-2 py-3 text-left text-xs font-medium text-white uppercase tracking-wider",
-                            scope: "col"
-                          }, "Last Payment"), React.createElement("th", {
+                          }, "Payment Timestamp"), React.createElement("th", {
                             className: "relative px-5 py-4",
                             scope: "col"
                           }, React.createElement("span", {
@@ -55,9 +52,9 @@ function StreamsTable$Streams(Props) {
                             scope: "col"
                           }, React.createElement("span", {
                                 className: "sr-only"
-                              }, "Delete")))), Belt_Array.map(match.streams, (function (stream) {
+                              }, "Delete")))), Belt_Array.map(match.payments, (function (payment) {
                       return React.createElement("tbody", {
-                                  key: String(stream.id),
+                                  key: String(payment.id),
                                   className: "bg-white divide-y divide-black"
                                 }, React.createElement("tr", undefined, React.createElement("td", {
                                           className: "px-2 py-4 whitespace-nowrap"
@@ -66,30 +63,20 @@ function StreamsTable$Streams(Props) {
                                             }, React.createElement("div", {
                                                   className: "flex-shrink-0 h-10 w-10"
                                                 }, React.createElement("img", {
-                                                      src: EthereumBlockiesBase64(stream.user.ethAddress)
+                                                      src: EthereumBlockiesBase64(payment.stream.user.ethAddress)
                                                     })), React.createElement("div", {
                                                   className: "ml-4"
                                                 }, React.createElement("div", {
                                                       className: "text-sm font-medium text-gray-900"
-                                                    }, stream.user.name), React.createElement("div", {
+                                                    }, payment.stream.user.name), React.createElement("div", {
                                                       className: "text-sm text-gray-500"
                                                     }, React.createElement(DisplayAddress$FlowsUserApp.make, {
-                                                          address: stream.user.ethAddress
+                                                          address: payment.stream.user.ethAddress
                                                         }))))), React.createElement("td", {
                                           className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
-                                        }, stream.paymentToken.name), React.createElement("td", {
+                                        }, payment.stream.paymentToken.name), React.createElement("td", {
                                           className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
-                                        }, stream.amount.toString()), React.createElement("td", {
-                                          className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
-                                        }, React.createElement("div", {
-                                              className: "flex items-center"
-                                            }, React.createElement("div", {
-                                                  className: "ml-4"
-                                                }, React.createElement("div", {
-                                                      className: "text-sm font-medium text-gray-900"
-                                                    }, fromTimeStampToDate(stream.nextPayment.toNumber())), React.createElement("div", {
-                                                      className: "text-sm font-medium text-gray-900"
-                                                    }, fromTimeStampToTime(stream.nextPayment.toNumber()))))), React.createElement("td", {
+                                        }, payment.paymentAmount.toString()), React.createElement("td", {
                                           className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
                                         }, React.createElement("div", {
                                               className: "flex items-center"
@@ -97,21 +84,21 @@ function StreamsTable$Streams(Props) {
                                                   className: "ml-4"
                                                 }, React.createElement("div", {
                                                       className: "text-sm font-medium text-gray-900"
-                                                    }, stream.lastPayment === 0 ? "-" : fromTimeStampToDate(stream.lastPayment)), React.createElement("div", {
+                                                    }, fromTimeStampToDate(payment.paymentTimestamp.toNumber())), React.createElement("div", {
                                                       className: "text-sm font-medium text-gray-900"
-                                                    }, stream.lastPayment === 0 ? "-" : fromTimeStampToTime(stream.lastPayment)))))));
+                                                    }, fromTimeStampToTime(payment.paymentTimestamp.toNumber())))))));
                     })));
   } else {
     return React.createElement("p", undefined, "Error loading data");
   }
 }
 
-var Streams = {
-  make: StreamsTable$Streams
+var $$History = {
+  make: PaymentHistoryTable$History
 };
 
-function StreamsTable(Props) {
-  var streamsQuery = Curry.app(Queries$FlowsUserApp.ViewPaymentsStreams.use, [
+function PaymentHistoryTable(Props) {
+  var paymentHistoryQuery = Curry.app(Queries$FlowsUserApp.ViewPaymentHistory.use, [
         undefined,
         undefined,
         undefined,
@@ -135,17 +122,17 @@ function StreamsTable(Props) {
                       className: "py-2 align-middle inline-block min-w-full sm:px-2 lg:px-8"
                     }, React.createElement("div", {
                           className: "shadow overflow-hidden border border-black rounded"
-                        }, React.createElement(StreamsTable$Streams, {
-                              streamsQuery: streamsQuery
+                        }, React.createElement(PaymentHistoryTable$History, {
+                              paymentHistoryQuery: paymentHistoryQuery
                             })))));
 }
 
-var make = StreamsTable;
+var make = PaymentHistoryTable;
 
 export {
   fromTimeStampToDate ,
   fromTimeStampToTime ,
-  Streams ,
+  $$History ,
   make ,
   
 }
