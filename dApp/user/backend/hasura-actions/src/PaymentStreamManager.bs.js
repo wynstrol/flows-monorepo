@@ -156,8 +156,6 @@ var createStream = Serbet.endpoint(undefined, {
           return Curry._1(req.requireBody, body_in_decode).then(function (param) {
                       var match = param.input;
                       var startPayment = match.startPayment;
-                      var interval = match.interval;
-                      var actualNextPayment = startPayment + Math.imul(interval, 60) | 0;
                       return Curry.app(gqlClient.reason_mutate, [
                                     {
                                       query: Query.CreatePaymentStream.query,
@@ -175,7 +173,7 @@ var createStream = Serbet.endpoint(undefined, {
                                     undefined,
                                     undefined,
                                     undefined,
-                                    Query.CreatePaymentStream.makeVariables(match.amount, interval, match.numberOfPayments, match.userAddress, startPayment, "OPEN", match.tokenAddress, actualNextPayment, undefined)
+                                    Query.CreatePaymentStream.makeVariables(match.amount, match.interval, match.numberOfPayments, match.userAddress, startPayment, "OPEN", match.tokenAddress, startPayment, undefined)
                                   ]).then(function (result) {
                                   var tmp;
                                   tmp = result.TAG === /* Ok */0 ? ({
@@ -212,7 +210,7 @@ function addPaymentEntry(streamID, timestamp, amount) {
           undefined,
           undefined,
           undefined,
-          Query.AddPaymentEntry.makeVariables(streamID, timestamp, "PENDING", amount, undefined)
+          Query.AddPaymentEntry.makeVariables(streamID, timestamp, "COMPLETE", amount, undefined)
         ]).then(function (result) {
         if (result.TAG === /* Ok */0) {
           console.log("success payment added", result._0.data.insert_payments_one);

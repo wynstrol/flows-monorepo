@@ -22,14 +22,20 @@ type streamData = {
 let makePayment = (~recipientAddress, ~paymentData: streamData) => {
   Js.log("making payment")
   let remainingPayments = BN.sub(paymentData.numberOfPayments, paymentData.numberOfPaymentsMade)
+  Js.log2("remainingPayments ", remainingPayments->BN.toString)
   let intervalInSeconds = BN.mul(paymentData.interval, CONSTANTS.big60)
+  Js.log2("intervalInSeconds ", intervalInSeconds->BN.toString)
   let extraPayments = BN.div(
     BN.sub(paymentData.currentPayment, paymentData.nextPayment),
     intervalInSeconds,
   )
+  Js.log2("extraPayments ", extraPayments->BN.toString)
   let extraPaymentsMade = BN.add(extraPayments, CONSTANTS.big1)
+  Js.log2("extraPaymentsMade ", extraPaymentsMade->BN.toString)
   let finalPayment = BN.min(extraPaymentsMade, remainingPayments)
+  Js.log2("finalPayment ", finalPayment->BN.toString)
   let finalAmount = BN.mul(paymentData.amount, finalPayment)
+  Js.log2("finalAmount ", finalAmount->BN.toString)
   PaymentStreamManager.addPaymentEntry(
     ~streamID=paymentData.streamID,
     ~timestamp=paymentData.nextPayment->BN.toNumber,

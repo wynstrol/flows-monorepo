@@ -38,7 +38,7 @@ let createStream = Serbet.endpoint({
       input: {userAddress, tokenAddress, amount, numberOfPayments, interval, startPayment},
     }) => {
       //Js.log(`TODO: we must still make the deposit here ${deposit}`)
-      let actualNextPayment = startPayment + interval * 60
+      let actualNextPayment = startPayment
       gqlClient.mutate(
         ~mutation=module(Query.CreatePaymentStream),
         Query.CreatePaymentStream.makeVariables(
@@ -74,7 +74,7 @@ let addPaymentEntry = (~streamID, ~timestamp, ~amount) => {
     Query.AddPaymentEntry.makeVariables(
       ~streamID,
       ~paymentTimestamp=timestamp,
-      ~paymentState=#PENDING,
+      ~paymentState=#COMPLETE,
       ~paymentAmount=amount,
       (),
     ),

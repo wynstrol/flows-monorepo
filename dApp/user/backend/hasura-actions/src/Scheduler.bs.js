@@ -33,11 +33,17 @@ function makePaymentRequest_encode(v) {
 function makePayment(recipientAddress, paymentData) {
   console.log("making payment");
   var remainingPayments = paymentData.numberOfPayments.sub(paymentData.numberOfPaymentsMade);
+  console.log("remainingPayments ", remainingPayments.toString());
   var intervalInSeconds = paymentData.interval.mul(CONSTANTS.big60);
+  console.log("intervalInSeconds ", intervalInSeconds.toString());
   var extraPayments = paymentData.currentPayment.sub(paymentData.nextPayment).div(intervalInSeconds);
+  console.log("extraPayments ", extraPayments.toString());
   var extraPaymentsMade = extraPayments.add(CONSTANTS.big1);
+  console.log("extraPaymentsMade ", extraPaymentsMade.toString());
   var finalPayment = BnJs.min(extraPaymentsMade, remainingPayments);
+  console.log("finalPayment ", finalPayment.toString());
   var finalAmount = paymentData.amount.mul(finalPayment);
+  console.log("finalAmount ", finalAmount.toString());
   PaymentStreamManager.addPaymentEntry(paymentData.streamID, paymentData.nextPayment.toNumber(), finalAmount.toString());
   var totalPayments = paymentData.numberOfPaymentsMade.add(finalPayment);
   if (paymentData.numberOfPayments.eq(totalPayments)) {
