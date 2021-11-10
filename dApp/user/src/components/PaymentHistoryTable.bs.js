@@ -2,7 +2,9 @@
 
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
+import * as Ethers from "ethers";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
+import * as Ethers$FlowsUserApp from "../lib/Ethers/Ethers.bs.js";
 import * as Queries$FlowsUserApp from "../Queries.bs.js";
 import EthereumBlockiesBase64 from "ethereum-blockies-base64";
 import * as DisplayAddress$FlowsUserApp from "./DisplayAddress.bs.js";
@@ -76,7 +78,7 @@ function PaymentHistoryTable$History(Props) {
                                           className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
                                         }, payment.stream.paymentToken.name), React.createElement("td", {
                                           className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
-                                        }, payment.paymentAmount.toString()), React.createElement("td", {
+                                        }, Ethers$FlowsUserApp.Utils.formatEther(Ethers.BigNumber.from(payment.paymentAmount.toString()))), React.createElement("td", {
                                           className: "px-2 py-4 whitespace-nowrap text-sm text-gray-800"
                                         }, React.createElement("div", {
                                               className: "flex items-center"

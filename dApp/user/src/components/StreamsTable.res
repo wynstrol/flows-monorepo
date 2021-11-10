@@ -81,7 +81,9 @@ module Streams = {
                 {stream.paymentToken.name->React.string}
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-black">
-                {stream.amount->BN.toString->React.string}
+                {Ethers.Utils.formatEther(
+                  stream.amount->BN.toString->Ethers.BigNumber.fromUnsafe,
+                )->React.string}
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-black">
                 <div className="flex items-center">

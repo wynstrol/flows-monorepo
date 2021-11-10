@@ -76,7 +76,9 @@ module History = {
                 {payment.stream.paymentToken.name->React.string}
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
-                {payment.paymentAmount->BN.toString->React.string}
+                {Ethers.Utils.formatEther(
+                  payment.paymentAmount->BN.toString->Ethers.BigNumber.fromUnsafe,
+                )->React.string}
               </td>
               <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800">
                 <div className="flex items-center">

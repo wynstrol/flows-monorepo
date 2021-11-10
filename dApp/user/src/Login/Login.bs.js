@@ -31,7 +31,9 @@ function Login(Props) {
         nextPath,
         optCurrentUser
       ]);
-  return React.createElement("div", undefined, React.createElement("p", undefined, "Use one of the wallet providers below. "), React.createElement("div", {
+  return React.createElement("div", undefined, React.createElement("div", {
+                  className: "mb-4 text-3xl font-bold text-center"
+                }, "Use one of the wallet providers below:"), React.createElement("div", {
                   className: "grid grid-cols-1 gap-3 md:grid-cols-3"
                 }, Belt_Array.mapWithIndex(connectors, (function (index, connector) {
                         return React.createElement("div", {

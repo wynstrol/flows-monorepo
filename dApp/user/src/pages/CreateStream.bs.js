@@ -22,7 +22,7 @@ function validateFloat(interval) {
   if (intervalOpt !== undefined) {
     return {
             TAG: /* Ok */0,
-            _0: intervalOpt
+            _0: String(intervalOpt)
           };
   } else {
     return {
@@ -80,13 +80,6 @@ var validators_startTime = {
     })
 };
 
-var validators_startPayment = {
-  strategy: /* OnFirstBlur */0,
-  validate: (function (param) {
-      return validateInt(param.startPayment);
-    })
-};
-
 var validators_tokenAddress = {
   strategy: /* OnFirstBlur */0,
   validate: (function (param) {
@@ -111,18 +104,7 @@ var validators_interval = {
 var validators_amount = {
   strategy: /* OnFirstBlur */0,
   validate: (function (param) {
-      var amount = param.amount;
-      if (amount.length > 0) {
-        return {
-                TAG: /* Ok */0,
-                _0: amount
-              };
-      } else {
-        return {
-                TAG: /* Error */1,
-                _0: "Please enter a valid amount"
-              };
-      }
+      return validateFloat(param.amount);
     })
 };
 
@@ -135,7 +117,6 @@ var validators_userAddress = {
 
 var validators = {
   startTime: validators_startTime,
-  startPayment: validators_startPayment,
   tokenAddress: validators_tokenAddress,
   numberOfPayments: validators_numberOfPayments,
   interval: validators_interval,
@@ -146,7 +127,6 @@ var validators = {
 function initialFieldsStatuses(_input) {
   return {
           startTime: /* Pristine */0,
-          startPayment: /* Pristine */0,
           tokenAddress: /* Pristine */0,
           numberOfPayments: /* Pristine */0,
           interval: /* Pristine */0,
@@ -168,81 +148,69 @@ function initialState(input) {
 function validateForm(input, validators, fieldsStatuses) {
   var match = fieldsStatuses.startTime;
   var match_0 = match ? match._0 : Curry._1(validators.startTime.validate, input);
-  var match$1 = fieldsStatuses.startPayment;
-  var match_0$1 = match$1 ? match$1._0 : Curry._1(validators.startPayment.validate, input);
-  var match$2 = fieldsStatuses.tokenAddress;
-  var match_0$2 = match$2 ? match$2._0 : Curry._1(validators.tokenAddress.validate, input);
-  var match$3 = fieldsStatuses.numberOfPayments;
-  var match_0$3 = match$3 ? match$3._0 : Curry._1(validators.numberOfPayments.validate, input);
-  var match$4 = fieldsStatuses.interval;
-  var match_0$4 = match$4 ? match$4._0 : Curry._1(validators.interval.validate, input);
-  var match$5 = fieldsStatuses.amount;
-  var match_0$5 = match$5 ? match$5._0 : Curry._1(validators.amount.validate, input);
-  var match$6 = fieldsStatuses.userAddress;
-  var match_0$6 = match$6 ? match$6._0 : Curry._1(validators.userAddress.validate, input);
+  var match$1 = fieldsStatuses.tokenAddress;
+  var match_0$1 = match$1 ? match$1._0 : Curry._1(validators.tokenAddress.validate, input);
+  var match$2 = fieldsStatuses.numberOfPayments;
+  var match_0$2 = match$2 ? match$2._0 : Curry._1(validators.numberOfPayments.validate, input);
+  var match$3 = fieldsStatuses.interval;
+  var match_0$3 = match$3 ? match$3._0 : Curry._1(validators.interval.validate, input);
+  var match$4 = fieldsStatuses.amount;
+  var match_0$4 = match$4 ? match$4._0 : Curry._1(validators.amount.validate, input);
+  var match$5 = fieldsStatuses.userAddress;
+  var match_0$5 = match$5 ? match$5._0 : Curry._1(validators.userAddress.validate, input);
   var startTimeResult = match_0;
   var startTimeResult$1;
   if (startTimeResult.TAG === /* Ok */0) {
-    var startPaymentResult = match_0$1;
-    if (startPaymentResult.TAG === /* Ok */0) {
-      var tokenAddressResult = match_0$2;
-      if (tokenAddressResult.TAG === /* Ok */0) {
-        var numberOfPaymentsResult = match_0$3;
-        if (numberOfPaymentsResult.TAG === /* Ok */0) {
-          var intervalResult = match_0$4;
-          if (intervalResult.TAG === /* Ok */0) {
-            var amountResult = match_0$5;
-            if (amountResult.TAG === /* Ok */0) {
-              var userAddressResult = match_0$6;
-              if (userAddressResult.TAG === /* Ok */0) {
-                return {
-                        TAG: /* Valid */0,
-                        output: {
-                          userAddress: userAddressResult._0,
-                          amount: amountResult._0,
-                          interval: intervalResult._0,
-                          numberOfPayments: numberOfPaymentsResult._0,
-                          tokenAddress: tokenAddressResult._0,
-                          startPayment: startPaymentResult._0,
-                          startTime: startTimeResult._0
+    var tokenAddressResult = match_0$1;
+    if (tokenAddressResult.TAG === /* Ok */0) {
+      var numberOfPaymentsResult = match_0$2;
+      if (numberOfPaymentsResult.TAG === /* Ok */0) {
+        var intervalResult = match_0$3;
+        if (intervalResult.TAG === /* Ok */0) {
+          var amountResult = match_0$4;
+          if (amountResult.TAG === /* Ok */0) {
+            var userAddressResult = match_0$5;
+            if (userAddressResult.TAG === /* Ok */0) {
+              return {
+                      TAG: /* Valid */0,
+                      output: {
+                        userAddress: userAddressResult._0,
+                        amount: amountResult._0,
+                        interval: intervalResult._0,
+                        numberOfPayments: numberOfPaymentsResult._0,
+                        tokenAddress: tokenAddressResult._0,
+                        startTime: startTimeResult._0
+                      },
+                      fieldsStatuses: {
+                        startTime: /* Dirty */{
+                          _0: startTimeResult,
+                          _1: /* Shown */0
                         },
-                        fieldsStatuses: {
-                          startTime: /* Dirty */{
-                            _0: startTimeResult,
-                            _1: /* Shown */0
-                          },
-                          startPayment: /* Dirty */{
-                            _0: startPaymentResult,
-                            _1: /* Shown */0
-                          },
-                          tokenAddress: /* Dirty */{
-                            _0: tokenAddressResult,
-                            _1: /* Shown */0
-                          },
-                          numberOfPayments: /* Dirty */{
-                            _0: numberOfPaymentsResult,
-                            _1: /* Shown */0
-                          },
-                          interval: /* Dirty */{
-                            _0: intervalResult,
-                            _1: /* Shown */0
-                          },
-                          amount: /* Dirty */{
-                            _0: amountResult,
-                            _1: /* Shown */0
-                          },
-                          userAddress: /* Dirty */{
-                            _0: userAddressResult,
-                            _1: /* Shown */0
-                          }
+                        tokenAddress: /* Dirty */{
+                          _0: tokenAddressResult,
+                          _1: /* Shown */0
                         },
-                        collectionsStatuses: undefined
-                      };
-              }
-              startTimeResult$1 = startTimeResult;
-            } else {
-              startTimeResult$1 = startTimeResult;
+                        numberOfPayments: /* Dirty */{
+                          _0: numberOfPaymentsResult,
+                          _1: /* Shown */0
+                        },
+                        interval: /* Dirty */{
+                          _0: intervalResult,
+                          _1: /* Shown */0
+                        },
+                        amount: /* Dirty */{
+                          _0: amountResult,
+                          _1: /* Shown */0
+                        },
+                        userAddress: /* Dirty */{
+                          _0: userAddressResult,
+                          _1: /* Shown */0
+                        }
+                      },
+                      collectionsStatuses: undefined
+                    };
             }
+            startTimeResult$1 = startTimeResult;
           } else {
             startTimeResult$1 = startTimeResult;
           }
@@ -265,28 +233,24 @@ function validateForm(input, validators, fieldsStatuses) {
               _0: startTimeResult$1,
               _1: /* Shown */0
             },
-            startPayment: /* Dirty */{
+            tokenAddress: /* Dirty */{
               _0: match_0$1,
               _1: /* Shown */0
             },
-            tokenAddress: /* Dirty */{
+            numberOfPayments: /* Dirty */{
               _0: match_0$2,
               _1: /* Shown */0
             },
-            numberOfPayments: /* Dirty */{
+            interval: /* Dirty */{
               _0: match_0$3,
               _1: /* Shown */0
             },
-            interval: /* Dirty */{
+            amount: /* Dirty */{
               _0: match_0$4,
               _1: /* Shown */0
             },
-            amount: /* Dirty */{
-              _0: match_0$5,
-              _1: /* Shown */0
-            },
             userAddress: /* Dirty */{
-              _0: match_0$6,
+              _0: match_0$5,
               _1: /* Shown */0
             }
           },
@@ -306,7 +270,6 @@ function useForm(initialInput, onSubmit) {
                           var init = state.fieldsStatuses;
                           return {
                                   startTime: status,
-                                  startPayment: init.startPayment,
                                   tokenAddress: init.tokenAddress,
                                   numberOfPayments: init.numberOfPayments,
                                   interval: init.interval,
@@ -328,13 +291,12 @@ function useForm(initialInput, onSubmit) {
                   } else {
                     return /* NoUpdate */0;
                   }
-              case /* BlurStartPaymentField */1 :
-                  var result$1 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.startPayment, validators_startPayment, (function (status) {
+              case /* BlurTokenAddressField */1 :
+                  var result$1 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.tokenAddress, validators_tokenAddress, (function (status) {
                           var init = state.fieldsStatuses;
                           return {
                                   startTime: init.startTime,
-                                  startPayment: status,
-                                  tokenAddress: init.tokenAddress,
+                                  tokenAddress: status,
                                   numberOfPayments: init.numberOfPayments,
                                   interval: init.interval,
                                   amount: init.amount,
@@ -355,14 +317,13 @@ function useForm(initialInput, onSubmit) {
                   } else {
                     return /* NoUpdate */0;
                   }
-              case /* BlurTokenAddressField */2 :
-                  var result$2 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.tokenAddress, validators_tokenAddress, (function (status) {
+              case /* BlurNumberOfPaymentsField */2 :
+                  var result$2 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.numberOfPayments, validators_numberOfPayments, (function (status) {
                           var init = state.fieldsStatuses;
                           return {
                                   startTime: init.startTime,
-                                  startPayment: init.startPayment,
-                                  tokenAddress: status,
-                                  numberOfPayments: init.numberOfPayments,
+                                  tokenAddress: init.tokenAddress,
+                                  numberOfPayments: status,
                                   interval: init.interval,
                                   amount: init.amount,
                                   userAddress: init.userAddress
@@ -382,15 +343,14 @@ function useForm(initialInput, onSubmit) {
                   } else {
                     return /* NoUpdate */0;
                   }
-              case /* BlurNumberOfPaymentsField */3 :
-                  var result$3 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.numberOfPayments, validators_numberOfPayments, (function (status) {
+              case /* BlurIntervalField */3 :
+                  var result$3 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.interval, validators_interval, (function (status) {
                           var init = state.fieldsStatuses;
                           return {
                                   startTime: init.startTime,
-                                  startPayment: init.startPayment,
                                   tokenAddress: init.tokenAddress,
-                                  numberOfPayments: status,
-                                  interval: init.interval,
+                                  numberOfPayments: init.numberOfPayments,
+                                  interval: status,
                                   amount: init.amount,
                                   userAddress: init.userAddress
                                 };
@@ -409,16 +369,15 @@ function useForm(initialInput, onSubmit) {
                   } else {
                     return /* NoUpdate */0;
                   }
-              case /* BlurIntervalField */4 :
-                  var result$4 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.interval, validators_interval, (function (status) {
+              case /* BlurAmountField */4 :
+                  var result$4 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.amount, validators_amount, (function (status) {
                           var init = state.fieldsStatuses;
                           return {
                                   startTime: init.startTime,
-                                  startPayment: init.startPayment,
                                   tokenAddress: init.tokenAddress,
                                   numberOfPayments: init.numberOfPayments,
-                                  interval: status,
-                                  amount: init.amount,
+                                  interval: init.interval,
+                                  amount: status,
                                   userAddress: init.userAddress
                                 };
                         }));
@@ -436,17 +395,16 @@ function useForm(initialInput, onSubmit) {
                   } else {
                     return /* NoUpdate */0;
                   }
-              case /* BlurAmountField */5 :
-                  var result$5 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.amount, validators_amount, (function (status) {
+              case /* BlurUserAddressField */5 :
+                  var result$5 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.userAddress, validators_userAddress, (function (status) {
                           var init = state.fieldsStatuses;
                           return {
                                   startTime: init.startTime,
-                                  startPayment: init.startPayment,
                                   tokenAddress: init.tokenAddress,
                                   numberOfPayments: init.numberOfPayments,
                                   interval: init.interval,
-                                  amount: status,
-                                  userAddress: init.userAddress
+                                  amount: init.amount,
+                                  userAddress: status
                                 };
                         }));
                   if (result$5 !== undefined) {
@@ -463,34 +421,7 @@ function useForm(initialInput, onSubmit) {
                   } else {
                     return /* NoUpdate */0;
                   }
-              case /* BlurUserAddressField */6 :
-                  var result$6 = Formality.validateFieldOnBlurWithValidator(state.input, state.fieldsStatuses.userAddress, validators_userAddress, (function (status) {
-                          var init = state.fieldsStatuses;
-                          return {
-                                  startTime: init.startTime,
-                                  startPayment: init.startPayment,
-                                  tokenAddress: init.tokenAddress,
-                                  numberOfPayments: init.numberOfPayments,
-                                  interval: init.interval,
-                                  amount: init.amount,
-                                  userAddress: status
-                                };
-                        }));
-                  if (result$6 !== undefined) {
-                    return {
-                            TAG: /* Update */0,
-                            _0: {
-                              input: state.input,
-                              fieldsStatuses: result$6,
-                              collectionsStatuses: state.collectionsStatuses,
-                              formStatus: state.formStatus,
-                              submissionStatus: state.submissionStatus
-                            }
-                          };
-                  } else {
-                    return /* NoUpdate */0;
-                  }
-              case /* Submit */7 :
+              case /* Submit */6 :
                   var match = state.formStatus;
                   if (typeof match !== "number" && match.TAG === /* Submitting */0) {
                     return /* NoUpdate */0;
@@ -529,27 +460,27 @@ function useForm(initialInput, onSubmit) {
                               return Curry._2(onSubmit, output, {
                                           notifyOnSuccess: (function (input) {
                                               return Curry._1(dispatch, {
-                                                          TAG: /* SetSubmittedStatus */7,
+                                                          TAG: /* SetSubmittedStatus */6,
                                                           _0: input
                                                         });
                                             }),
                                           notifyOnFailure: (function (error) {
                                               return Curry._1(dispatch, {
-                                                          TAG: /* SetSubmissionFailedStatus */8,
+                                                          TAG: /* SetSubmissionFailedStatus */7,
                                                           _0: error
                                                         });
                                             }),
                                           reset: (function (param) {
-                                              return Curry._1(dispatch, /* Reset */10);
+                                              return Curry._1(dispatch, /* Reset */9);
                                             }),
                                           dismissSubmissionResult: (function (param) {
-                                              return Curry._1(dispatch, /* DismissSubmissionResult */9);
+                                              return Curry._1(dispatch, /* DismissSubmissionResult */8);
                                             })
                                         });
                             })
                         };
                   break;
-              case /* DismissSubmissionError */8 :
+              case /* DismissSubmissionError */7 :
                   var match$2 = state.formStatus;
                   if (typeof match$2 === "number" || match$2.TAG !== /* SubmissionFailed */1) {
                     return /* NoUpdate */0;
@@ -565,7 +496,7 @@ function useForm(initialInput, onSubmit) {
                             }
                           };
                   }
-              case /* DismissSubmissionResult */9 :
+              case /* DismissSubmissionResult */8 :
                   var match$3 = state.formStatus;
                   if (typeof match$3 === "number") {
                     if (match$3 === /* Editing */0) {
@@ -585,7 +516,7 @@ function useForm(initialInput, onSubmit) {
                             submissionStatus: state.submissionStatus
                           }
                         };
-              case /* Reset */10 :
+              case /* Reset */9 :
                   return {
                           TAG: /* Update */0,
                           _0: initialState(initialInput)
@@ -604,7 +535,6 @@ function useForm(initialInput, onSubmit) {
                                     var init = state.fieldsStatuses;
                                     return {
                                             startTime: status,
-                                            startPayment: init.startPayment,
                                             tokenAddress: init.tokenAddress,
                                             numberOfPayments: init.numberOfPayments,
                                             interval: init.interval,
@@ -617,40 +547,16 @@ function useForm(initialInput, onSubmit) {
                             submissionStatus: state.submissionStatus
                           }
                         };
-              case /* UpdateStartPaymentField */1 :
+              case /* UpdateTokenAddressField */1 :
                   var nextInput$1 = Curry._1(action._0, state.input);
                   return {
                           TAG: /* Update */0,
                           _0: {
                             input: nextInput$1,
-                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$1, state.fieldsStatuses.startPayment, state.submissionStatus, validators_startPayment, (function (status) {
+                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$1, state.fieldsStatuses.tokenAddress, state.submissionStatus, validators_tokenAddress, (function (status) {
                                     var init = state.fieldsStatuses;
                                     return {
                                             startTime: init.startTime,
-                                            startPayment: status,
-                                            tokenAddress: init.tokenAddress,
-                                            numberOfPayments: init.numberOfPayments,
-                                            interval: init.interval,
-                                            amount: init.amount,
-                                            userAddress: init.userAddress
-                                          };
-                                  })),
-                            collectionsStatuses: state.collectionsStatuses,
-                            formStatus: state.formStatus,
-                            submissionStatus: state.submissionStatus
-                          }
-                        };
-              case /* UpdateTokenAddressField */2 :
-                  var nextInput$2 = Curry._1(action._0, state.input);
-                  return {
-                          TAG: /* Update */0,
-                          _0: {
-                            input: nextInput$2,
-                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$2, state.fieldsStatuses.tokenAddress, state.submissionStatus, validators_tokenAddress, (function (status) {
-                                    var init = state.fieldsStatuses;
-                                    return {
-                                            startTime: init.startTime,
-                                            startPayment: init.startPayment,
                                             tokenAddress: status,
                                             numberOfPayments: init.numberOfPayments,
                                             interval: init.interval,
@@ -663,17 +569,16 @@ function useForm(initialInput, onSubmit) {
                             submissionStatus: state.submissionStatus
                           }
                         };
-              case /* UpdateNumberOfPaymentsField */3 :
-                  var nextInput$3 = Curry._1(action._0, state.input);
+              case /* UpdateNumberOfPaymentsField */2 :
+                  var nextInput$2 = Curry._1(action._0, state.input);
                   return {
                           TAG: /* Update */0,
                           _0: {
-                            input: nextInput$3,
-                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$3, state.fieldsStatuses.numberOfPayments, state.submissionStatus, validators_numberOfPayments, (function (status) {
+                            input: nextInput$2,
+                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$2, state.fieldsStatuses.numberOfPayments, state.submissionStatus, validators_numberOfPayments, (function (status) {
                                     var init = state.fieldsStatuses;
                                     return {
                                             startTime: init.startTime,
-                                            startPayment: init.startPayment,
                                             tokenAddress: init.tokenAddress,
                                             numberOfPayments: status,
                                             interval: init.interval,
@@ -686,17 +591,16 @@ function useForm(initialInput, onSubmit) {
                             submissionStatus: state.submissionStatus
                           }
                         };
-              case /* UpdateIntervalField */4 :
-                  var nextInput$4 = Curry._1(action._0, state.input);
+              case /* UpdateIntervalField */3 :
+                  var nextInput$3 = Curry._1(action._0, state.input);
                   return {
                           TAG: /* Update */0,
                           _0: {
-                            input: nextInput$4,
-                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$4, state.fieldsStatuses.interval, state.submissionStatus, validators_interval, (function (status) {
+                            input: nextInput$3,
+                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$3, state.fieldsStatuses.interval, state.submissionStatus, validators_interval, (function (status) {
                                     var init = state.fieldsStatuses;
                                     return {
                                             startTime: init.startTime,
-                                            startPayment: init.startPayment,
                                             tokenAddress: init.tokenAddress,
                                             numberOfPayments: init.numberOfPayments,
                                             interval: status,
@@ -709,17 +613,16 @@ function useForm(initialInput, onSubmit) {
                             submissionStatus: state.submissionStatus
                           }
                         };
-              case /* UpdateAmountField */5 :
-                  var nextInput$5 = Curry._1(action._0, state.input);
+              case /* UpdateAmountField */4 :
+                  var nextInput$4 = Curry._1(action._0, state.input);
                   return {
                           TAG: /* Update */0,
                           _0: {
-                            input: nextInput$5,
-                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$5, state.fieldsStatuses.amount, state.submissionStatus, validators_amount, (function (status) {
+                            input: nextInput$4,
+                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$4, state.fieldsStatuses.amount, state.submissionStatus, validators_amount, (function (status) {
                                     var init = state.fieldsStatuses;
                                     return {
                                             startTime: init.startTime,
-                                            startPayment: init.startPayment,
                                             tokenAddress: init.tokenAddress,
                                             numberOfPayments: init.numberOfPayments,
                                             interval: init.interval,
@@ -732,17 +635,16 @@ function useForm(initialInput, onSubmit) {
                             submissionStatus: state.submissionStatus
                           }
                         };
-              case /* UpdateUserAddressField */6 :
-                  var nextInput$6 = Curry._1(action._0, state.input);
+              case /* UpdateUserAddressField */5 :
+                  var nextInput$5 = Curry._1(action._0, state.input);
                   return {
                           TAG: /* Update */0,
                           _0: {
-                            input: nextInput$6,
-                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$6, state.fieldsStatuses.userAddress, state.submissionStatus, validators_userAddress, (function (status) {
+                            input: nextInput$5,
+                            fieldsStatuses: Formality.validateFieldOnChangeWithValidator(nextInput$5, state.fieldsStatuses.userAddress, state.submissionStatus, validators_userAddress, (function (status) {
                                     var init = state.fieldsStatuses;
                                     return {
                                             startTime: init.startTime,
-                                            startPayment: init.startPayment,
                                             tokenAddress: init.tokenAddress,
                                             numberOfPayments: init.numberOfPayments,
                                             interval: init.interval,
@@ -755,7 +657,7 @@ function useForm(initialInput, onSubmit) {
                             submissionStatus: state.submissionStatus
                           }
                         };
-              case /* SetSubmittedStatus */7 :
+              case /* SetSubmittedStatus */6 :
                   var input = action._0;
                   if (input !== undefined) {
                     return {
@@ -780,7 +682,7 @@ function useForm(initialInput, onSubmit) {
                             }
                           };
                   }
-              case /* SetSubmissionFailedStatus */8 :
+              case /* SetSubmissionFailedStatus */7 :
                   return {
                           TAG: /* Update */0,
                           _0: {
@@ -794,7 +696,7 @@ function useForm(initialInput, onSubmit) {
                             submissionStatus: state.submissionStatus
                           }
                         };
-              case /* MapSubmissionError */9 :
+              case /* MapSubmissionError */8 :
                   var map = action._0;
                   var error$1 = state.formStatus;
                   if (typeof error$1 === "number") {
@@ -851,17 +753,9 @@ function useForm(initialInput, onSubmit) {
                             })
                         });
             }),
-          updateStartPayment: (function (nextInputFn, nextValue) {
-              return Curry._1(dispatch, {
-                          TAG: /* UpdateStartPaymentField */1,
-                          _0: (function (__x) {
-                              return Curry._2(nextInputFn, __x, nextValue);
-                            })
-                        });
-            }),
           updateTokenAddress: (function (nextInputFn, nextValue) {
               return Curry._1(dispatch, {
-                          TAG: /* UpdateTokenAddressField */2,
+                          TAG: /* UpdateTokenAddressField */1,
                           _0: (function (__x) {
                               return Curry._2(nextInputFn, __x, nextValue);
                             })
@@ -869,7 +763,7 @@ function useForm(initialInput, onSubmit) {
             }),
           updateNumberOfPayments: (function (nextInputFn, nextValue) {
               return Curry._1(dispatch, {
-                          TAG: /* UpdateNumberOfPaymentsField */3,
+                          TAG: /* UpdateNumberOfPaymentsField */2,
                           _0: (function (__x) {
                               return Curry._2(nextInputFn, __x, nextValue);
                             })
@@ -877,7 +771,7 @@ function useForm(initialInput, onSubmit) {
             }),
           updateInterval: (function (nextInputFn, nextValue) {
               return Curry._1(dispatch, {
-                          TAG: /* UpdateIntervalField */4,
+                          TAG: /* UpdateIntervalField */3,
                           _0: (function (__x) {
                               return Curry._2(nextInputFn, __x, nextValue);
                             })
@@ -885,7 +779,7 @@ function useForm(initialInput, onSubmit) {
             }),
           updateAmount: (function (nextInputFn, nextValue) {
               return Curry._1(dispatch, {
-                          TAG: /* UpdateAmountField */5,
+                          TAG: /* UpdateAmountField */4,
                           _0: (function (__x) {
                               return Curry._2(nextInputFn, __x, nextValue);
                             })
@@ -893,7 +787,7 @@ function useForm(initialInput, onSubmit) {
             }),
           updateUserAddress: (function (nextInputFn, nextValue) {
               return Curry._1(dispatch, {
-                          TAG: /* UpdateUserAddressField */6,
+                          TAG: /* UpdateUserAddressField */5,
                           _0: (function (__x) {
                               return Curry._2(nextInputFn, __x, nextValue);
                             })
@@ -902,26 +796,22 @@ function useForm(initialInput, onSubmit) {
           blurStartTime: (function (param) {
               return Curry._1(dispatch, /* BlurStartTimeField */0);
             }),
-          blurStartPayment: (function (param) {
-              return Curry._1(dispatch, /* BlurStartPaymentField */1);
-            }),
           blurTokenAddress: (function (param) {
-              return Curry._1(dispatch, /* BlurTokenAddressField */2);
+              return Curry._1(dispatch, /* BlurTokenAddressField */1);
             }),
           blurNumberOfPayments: (function (param) {
-              return Curry._1(dispatch, /* BlurNumberOfPaymentsField */3);
+              return Curry._1(dispatch, /* BlurNumberOfPaymentsField */2);
             }),
           blurInterval: (function (param) {
-              return Curry._1(dispatch, /* BlurIntervalField */4);
+              return Curry._1(dispatch, /* BlurIntervalField */3);
             }),
           blurAmount: (function (param) {
-              return Curry._1(dispatch, /* BlurAmountField */5);
+              return Curry._1(dispatch, /* BlurAmountField */4);
             }),
           blurUserAddress: (function (param) {
-              return Curry._1(dispatch, /* BlurUserAddressField */6);
+              return Curry._1(dispatch, /* BlurUserAddressField */5);
             }),
           startTimeResult: Formality.exposeFieldResult(state.fieldsStatuses.startTime),
-          startPaymentResult: Formality.exposeFieldResult(state.fieldsStatuses.startPayment),
           tokenAddressResult: Formality.exposeFieldResult(state.fieldsStatuses.tokenAddress),
           numberOfPaymentsResult: Formality.exposeFieldResult(state.fieldsStatuses.numberOfPayments),
           intervalResult: Formality.exposeFieldResult(state.fieldsStatuses.interval),
@@ -931,7 +821,7 @@ function useForm(initialInput, onSubmit) {
           status: state.formStatus,
           dirty: (function (param) {
               var match = state.fieldsStatuses;
-              if (match.startTime || match.startPayment || match.tokenAddress || match.numberOfPayments || match.interval || match.amount || match.userAddress) {
+              if (match.startTime || match.tokenAddress || match.numberOfPayments || match.interval || match.amount || match.userAddress) {
                 return true;
               } else {
                 return false;
@@ -947,22 +837,22 @@ function useForm(initialInput, onSubmit) {
             }),
           submitting: tmp,
           submit: (function (param) {
-              return Curry._1(dispatch, /* Submit */7);
+              return Curry._1(dispatch, /* Submit */6);
             }),
           dismissSubmissionError: (function (param) {
-              return Curry._1(dispatch, /* DismissSubmissionError */8);
+              return Curry._1(dispatch, /* DismissSubmissionError */7);
             }),
           dismissSubmissionResult: (function (param) {
-              return Curry._1(dispatch, /* DismissSubmissionResult */9);
+              return Curry._1(dispatch, /* DismissSubmissionResult */8);
             }),
           mapSubmissionError: (function (map) {
               return Curry._1(dispatch, {
-                          TAG: /* MapSubmissionError */9,
+                          TAG: /* MapSubmissionError */8,
                           _0: map
                         });
             }),
           reset: (function (param) {
-              return Curry._1(dispatch, /* Reset */10);
+              return Curry._1(dispatch, /* Reset */9);
             })
         };
 }
@@ -982,7 +872,6 @@ var initialInput = {
   interval: "",
   numberOfPayments: "",
   tokenAddress: "",
-  startPayment: "",
   startTime: ""
 };
 
@@ -1005,7 +894,7 @@ function CreateStream(Props) {
   var createProfileMutate = match[0];
   var form = useForm(initialInput, (function (param, _form) {
           Curry._8(createProfileMutate, undefined, undefined, undefined, undefined, undefined, undefined, undefined, {
-                  amount: param.amount,
+                  amount: Ethers$FlowsUserApp.Utils.parseEtherUnsafe(param.amount).toString(),
                   interval: param.interval,
                   numberOfPayments: param.numberOfPayments,
                   recipient: param.userAddress,
@@ -1043,7 +932,6 @@ function CreateStream(Props) {
                                       interval: input.interval,
                                       numberOfPayments: input.numberOfPayments,
                                       tokenAddress: input.tokenAddress,
-                                      startPayment: input.startPayment,
                                       startTime: input.startTime
                                     };
                             })),
@@ -1061,7 +949,6 @@ function CreateStream(Props) {
                                       interval: input.interval,
                                       numberOfPayments: input.numberOfPayments,
                                       tokenAddress: input.tokenAddress,
-                                      startPayment: input.startPayment,
                                       startTime: input.startTime
                                     };
                             })),
@@ -1079,7 +966,6 @@ function CreateStream(Props) {
                                       interval: value,
                                       numberOfPayments: input.numberOfPayments,
                                       tokenAddress: input.tokenAddress,
-                                      startPayment: input.startPayment,
                                       startTime: input.startTime
                                     };
                             })),
@@ -1097,7 +983,6 @@ function CreateStream(Props) {
                                       interval: input.interval,
                                       numberOfPayments: value,
                                       tokenAddress: input.tokenAddress,
-                                      startPayment: input.startPayment,
                                       startTime: input.startTime
                                     };
                             })),
@@ -1115,7 +1000,6 @@ function CreateStream(Props) {
                                       interval: input.interval,
                                       numberOfPayments: input.numberOfPayments,
                                       tokenAddress: value,
-                                      startPayment: input.startPayment,
                                       startTime: input.startTime
                                     };
                             })),
@@ -1133,15 +1017,16 @@ function CreateStream(Props) {
                                       interval: input.interval,
                                       numberOfPayments: input.numberOfPayments,
                                       tokenAddress: input.tokenAddress,
-                                      startPayment: input.startPayment,
                                       startTime: value
                                     };
                             })),
                       result: form.startTimeResult,
                       disabled: form.submitting
-                    }), React.createElement("br", undefined), React.createElement("button", {
-                      className: "mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded"
-                    }, "CREATE STREAM")), React.createElement("br", undefined));
+                    }), React.createElement("br", undefined), React.createElement("div", {
+                      className: "-mt-2 text-center"
+                    }, React.createElement("button", {
+                          className: "mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-4 py-2 bg-white text-base font-large text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-lg rounded"
+                        }, "Create Stream"))));
 }
 
 var make = CreateStream;

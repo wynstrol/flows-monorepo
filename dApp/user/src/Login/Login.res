@@ -28,8 +28,8 @@ let make = (~redirectOnLogin=true) => {
   }, (nextPath, optCurrentUser))
 
   <div>
-    <p>
-      {"Use one of the wallet providers below. "->React.string}
+    <div className="mb-4 text-3xl font-bold text-center">
+      {"Use one of the wallet providers below:"->React.string}
       /* <small>
         {"(Not sure where to go from here? "->React.string}
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
@@ -39,7 +39,7 @@ let make = (~redirectOnLogin=true) => {
         </a>
         {")"->React.string}
       </small>*/
-    </p>
+    </div>
     <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
       {connectors
       ->Array.mapWithIndex((index, connector) =>

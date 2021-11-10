@@ -8,7 +8,7 @@ let validateFloat = interval => {
   let intervalOpt = interval->Belt.Float.fromString
 
   switch intervalOpt {
-  | Some(interval) => interval->Ok
+  | Some(interval) => interval->Belt.Float.toString->Ok
   | None => Error("Please enter a valid float")
   }
 }
@@ -36,7 +36,6 @@ module CreatePaymentStreamForm = %form(
     interval: string,
     numberOfPayments: string,
     tokenAddress: string,
-    startPayment: string,
     startTime: string,
   }
   type output = {
@@ -45,7 +44,6 @@ module CreatePaymentStreamForm = %form(
     interval: int,
     numberOfPayments: int,
     tokenAddress: string,
-    startPayment: int,
     startTime: string,
   }
   let validators = {
@@ -58,13 +56,13 @@ module CreatePaymentStreamForm = %form(
     amount: {
       strategy: OnFirstBlur,
       validate: ({amount}) => {
-        //validateFloat(amount)
-        if amount->Js.String.length > 0 {
+        validateFloat(amount)
+        /* if amount->Js.String.length > 0 {
           // do this properly at some stage
           amount->Ok
         } else {
           Error("Please enter a valid amount")
-        }
+        }*/
       },
     },
     interval: {
@@ -83,12 +81,6 @@ module CreatePaymentStreamForm = %form(
       strategy: OnFirstBlur,
       validate: ({tokenAddress}) => {
         validateAddress(tokenAddress)
-      },
-    },
-    startPayment: {
-      strategy: OnFirstBlur,
-      validate: ({startPayment}) => {
-        validateInt(startPayment)
       },
     },
     startTime: {
@@ -111,21 +103,20 @@ let initialInput: CreatePaymentStreamForm.input = {
   interval: "",
   numberOfPayments: "",
   tokenAddress: "",
-  startPayment: "",
   startTime: "",
 }
 
 @react.component
 let make = () => {
   let (createProfileMutate, _createProfileMutateResult) = Queries.CreatePaymentStream.use()
-  /// $amount: String!, $interval: Int!, $numberOfPayments: Int!, $recipient: String!, $startPayment: Int!, $state: String, $tokenAddress: String!
+
   let form = CreatePaymentStreamForm.useForm(~initialInput, ~onSubmit=(
     {userAddress, amount, interval, numberOfPayments, tokenAddress, startTime},
     _form,
   ) => {
     let _ = createProfileMutate({
       recipient: userAddress,
-      amount: amount,
+      amount: Ethers.Utils.parseEtherUnsafe(~amount)->Ethers.BigNumber.toString,
       interval: interval,
       numberOfPayments: numberOfPayments,
       tokenAddress: tokenAddress,
@@ -145,15 +136,17 @@ let make = () => {
       className="mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded"
       onClick={_ => {
         let _ = createProfileMutate({
-          recipient: "0xF58e6F5Fc36d26efFF6b4188A9F607C6FAc6737b",
+          recipient: "0xc9531d11156f5992A5c6B821D81513CfB7d0488b",
           amount: "10",
           interval: 10,
           numberOfPayments: 10,
           tokenAddress: "0xC563388e2e2fdD422166eD5E76971D11eD37A466",
-          startPayment: 1634834020,
+          startPayment: Js.Date.fromString("2021-11-17T08:08")->getTimestamp,
         })->JsPromise.map(_createProfileMutateResult =>
           switch _createProfileMutateResult {
-          | Ok(_result) => Js.log2("success?", _result)
+          | Ok(_result) =>
+            Js.log2("success?", _result)
+            ReasonReactRouter.push("/")
           | Error(error) => Js.log2("fail?", error)
           }
         )
@@ -240,12 +233,14 @@ let make = () => {
         result={form.startTimeResult}
       />
       <br />
-      <button
-        className="mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded">
-        {"CREATE STREAM"->React.string}
-      </button>
+      <div className="-mt-2 text-center">
+        <button
+        //className="mt-3 w-full inline-flex justify-center border border-black shadow-sm px-4 py-2 bg-white text-base font-medium text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm rounded">
+          className="mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-4 py-2 bg-white text-base font-large text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-lg rounded">
+          {"Create Stream"->React.string}
+        </button>
+      </div>
     </Form>
-    <br />
     /* <input
       type_="datetime-local"
       id="birthdaytime"
