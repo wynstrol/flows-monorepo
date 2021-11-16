@@ -4889,6 +4889,11 @@ bs-css@13.3.0, bs-css@^13.3.0:
   resolved "https://registry.yarnpkg.com/bs-css/-/bs-css-13.3.0.tgz#1cf6aa3a642e247aa872dcde154d5465633697bc"
   integrity sha512-nrksx6GKOhkZ8UcppMn8ga0dmehXtVCMv9WN57yygcwK8q5GlVbBBR5GKfabyMb2UG/6QWKYk0jFE1enyXKLMQ==
 
+bs-fetch@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/bs-fetch/-/bs-fetch-0.6.2.tgz#37d982e9f79b9bc44c23e87ae78ccbee1f869adf"
+  integrity sha512-VXEjp8kY3vHPckaoy3d96Bx0KYjJAPLNISBwfpwMN26K6DtuZYwI2HKhx7zeHBajz1bRArfx7O8OOLcdtujMvg==
+
 bs-moment@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/bs-moment/-/bs-moment-0.6.0.tgz#b49c5580598ef277696494684fd274ea1f8b1019"
@@ -6073,6 +6078,11 @@ decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
+
+decco@^1.3.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/decco/-/decco-1.5.0.tgz#4a74d5cb9ffc7b3dd821f9e8a77ff633f05e752c"
+  integrity sha512-d+QQ+4AgEHyqK0Ums0xsgxRjC7b1IVe96M/I8y9SZ+uo0bR0Fi4zM9BJnzDcaKwUPM/z5ze5klfRscZkz+psRg==
 
 decimal.js@^10.2.0:
   version "10.2.1"

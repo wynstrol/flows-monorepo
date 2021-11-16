@@ -1,3 +1,72 @@
+/*
+curl -X POST --data-raw '{"amount": "100000000000000000"}' http://localhost:5001/api/v1/payments/0xC563388e2e2fdD422166eD5E76971D11eD37A466/0x91c0c7b5D42e9B65C8071FbDeC7b1EC54D92AD92
+
+--data-raw '{"amount":"10000000000000000000","identifier":"1612189154951"}'*/
+
+/*
+curl --location --request POST 'http://localhost:8080/v1alpha1/pg_dump' \
+--header 'x-hasura-admin-secret: testing' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "opts": ["-O", "-x", "--schema", "public", "--schema", "auth", "--inserts"],
+  "clean_output": true
+}' -o backup.sql
+*/
+
+@decco.encode
+type makeBackupRequest = {
+  opts: array<string>,
+  clean_output: bool,
+}
+
+let backupData = () => {
+  let requestString = "http://localhost:8080/v1alpha1/pg_dump"
+  Js.log2("request string: ", requestString)
+  Fetch.fetchWithInit(
+    requestString,
+    Fetch.RequestInit.make(
+      ~method_=Post,
+      ~credentials=Include,
+      ~body=Fetch.BodyInit.make(
+        {
+          opts: [
+            "-O",
+            "-x",
+            "-f",
+            "backup.sql",
+            "--schema",
+            "public",
+            "--schema",
+            "auth",
+            "--inserts",
+          ],
+          clean_output: true,
+        }
+        ->makeBackupRequest_encode
+        ->Js.Json.stringify,
+      ),
+      ~headers=Fetch.HeadersInit.makeWithArray([
+        ("content-type", "application/json"),
+        ("x-hasura-admin-secret", "testing"),
+      ]),
+      /* ~headers=Fetch.HeadersInit.make({
+        "Content-Type": "application/json",
+      }),*/
+      (),
+    ),
+  )
+  ->JsPromise.then(Fetch.Response.json)
+  ->JsPromise.map(json => {
+    Js.log2("THE RESULT:", json)
+    if Js.String.includes("errors", Js.Json.stringify(json)) == false {
+      Js.log("SUCCESS")
+    } else {
+      Js.log("ERROR")
+    }
+  })
+  ->ignore
+}
+
 @react.component
 let make = () => {
   <div className="container max-w-3xl mx-auto">
@@ -48,6 +117,13 @@ let make = () => {
         <Heading> {"Payment History"->React.string} </Heading>
         <div className="-mt-2"> <PaymentHistoryTable /> </div>
       </div>
+    </div>
+    <div className="m-4 text-center">
+      <button
+        onClick={_ => backupData()}
+        className="mt-3 w-full inline-flex justify-center border-b-2 border border-black shadow-sm px-4 py-2 bg-white text-base font-large text-black hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-2 sm:w-auto sm:text-2xl rounded">
+        {"Backup"->React.string}
+      </button>
     </div>
   </div>
 }

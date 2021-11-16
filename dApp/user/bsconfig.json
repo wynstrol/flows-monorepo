@@ -33,6 +33,8 @@
   "namespace": true,
   "bs-dependencies": [
     "reason-react",
+    "decco",
+    "bs-fetch",
     "@reasonml-community/graphql-ppx",
     "bs-moment",
     "bs-css",
@@ -40,6 +42,6 @@
     "re-formality",
     "rescript-apollo-client"    
   ],
-  "ppx-flags": ["re-formality/ppx", "@reasonml-community/graphql-ppx/ppx"],
+  "ppx-flags": ["decco/ppx", "re-formality/ppx", "@reasonml-community/graphql-ppx/ppx"],
   "refmt": 3
 }
